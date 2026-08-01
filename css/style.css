@@ -667,3 +667,7 @@ body{direction:rtl; text-align:right;}
 .nav-links{direction:rtl;}
 .hero-actions{direction:rtl;}
 .contact-socials{direction:rtl;}
+.settings-panel{right:auto; left:6vw;}
+@media (max-width:480px){
+  .settings-panel{left:4vw;}
+}
