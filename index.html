@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try{
+    if (localStorage.getItem('rm-theme') === 'light') document.documentElement.setAttribute('data-theme','light');
+    if (localStorage.getItem('rm-motion') === 'reduced') document.documentElement.setAttribute('data-motion','reduced');
+  }catch(e){}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رهام محمدی — دانش‌آموز رشته‌ی زیست‌شناسی، تهران</title>
+<meta name="description" content="رهام محمدی، دانش‌آموز رشته‌ی زیست‌شناسی در سمپاد (نمونه دولتی) تهران، علاقه‌مند به ژنتیک، دندان‌پزشکی و برنامه‌نویسی. صفحه‌ی رسمی معرفی.">
+<meta name="keywords" content="رهام محمدی, رهام محمدی تهران, رهام محمدی سمپاد, رهام محمدی زیست شناسی">
+<meta name="author" content="رهام محمدی">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://roham615.github.io/roham-mohamadi-fa/">
+
+<link rel="alternate" hreflang="fa" href="https://roham615.github.io/roham-mohamadi-fa/">
+<link rel="alternate" hreflang="en" href="https://roham615.github.io/roham-mohamadi-site/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="رهام محمدی — دانش‌آموز رشته‌ی زیست‌شناسی">
+<meta property="og:description" content="صفحه‌ی شخصی رهام محمدی: دانش‌آموز رشته‌ی زیست‌شناسی در سمپاد تهران، علاقه‌مند به ژنتیک، دندان‌پزشکی و برنامه‌نویسی.">
+<meta property="og:url" content="https://roham615.github.io/roham-mohamadi-fa/">
+<meta property="og:site_name" content="رهام محمدی">
+<meta property="og:locale" content="fa_IR">
+<meta property="profile:first_name" content="رهام">
+<meta property="profile:last_name" content="محمدی">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="رهام محمدی — دانش‌آموز رشته‌ی زیست‌شناسی">
+<meta name="twitter:description" content="دانش‌آموز رشته‌ی زیست‌شناسی در سمپاد تهران، علاقه‌مند به ژنتیک، دندان‌پزشکی و برنامه‌نویسی.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%230a0a0d%22/><text x=%2250%22 y=%2266%22 font-size=%2260%22 fill=%22%23ff6b35%22 text-anchor=%22middle%22 font-family=%22Georgia%22>R</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "رهام محمدی",
+  "alternateName": ["Roham Mohamadi", "رهام"],
+  "url": "https://roham615.github.io/roham-mohamadi-fa/",
+  "jobTitle": "دانش‌آموز دبیرستان",
+  "affiliation": {
+    "@type": "EducationalOrganization",
+    "name": "سازمان ملی پرورش استعدادهای درخشان (سمپاد)"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "تهران",
+    "addressCountry": "IR"
+  },
+  "knowsAbout": ["زیست‌شناسی", "ژنتیک", "دندان‌پزشکی", "برنامه‌نویسی", "علوم کامپیوتر"],
+  "description": "رهام محمدی، دانش‌آموز رشته‌ی زیست‌شناسی در سمپاد تهران، علاقه‌مند به ژنتیک، دندان‌پزشکی و برنامه‌نویسی است."
+}
+</script>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+<svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav-mark">ر.م</a>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a href="#about">درباره</a>
+      <a href="#interests">علایق</a>
+      <a href="#path">مسیر</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#contact">تماس</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="باز کردن منو" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="settings-btn" id="settingsBtn" aria-label="تنظیمات سایت" aria-expanded="false">&#8942;</button>
+  </div>
+</header>
+
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-row">
+    <span>پوسته</span>
+    <div class="theme-toggle" role="group" aria-label="پوسته">
+      <button type="button" class="theme-opt active" data-theme-choice="dark">تیره</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">روشن</button>
+    </div>
+  </div>
+  <div class="settings-row">
+    <span>کاهش انیمیشن</span>
+    <button type="button" class="switch" id="motionSwitch" role="switch" aria-checked="false"><span></span></button>
+  </div>
+  <a href="admin/" class="settings-link">ویرایش محتوا</a>
+  <a href="https://github.com/roham615/roham-mohamadi-fa" target="_blank" rel="noopener" class="settings-link">مشاهده‌ی کد در گیت‌هاب</a>
+  <a href="https://roham615.github.io/roham-mohamadi-site/" class="settings-link">نسخه‌ی انگلیسی سایت</a>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">درباره</a>
+  <a href="#interests">علایق</a>
+  <a href="#path">مسیر</a>
+  <a href="#skills">مهارت‌ها</a>
+  <a href="#contact">تماس</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow reveal" id="hero-eyebrow">تهران، ایران &mdash; سمپاد، رشته‌ی زیست‌شناسی</p>
+      <h1 class="hero-name reveal">
+        <span class="hero-name-line" id="hero-first-name">رهام</span>
+        <span class="hero-name-line hero-name-accent" id="hero-last-name">محمدی</span>
+      </h1>
+      <p class="hero-sub reveal" id="hero-subtitle">
+        دانش‌آموز رشته‌ی زیست‌شناسی که سلول‌ها رو مثل داستان می‌خونه،
+        کمی هم برنامه‌نویسی بلده، و کنجکاوه ببینه دندان‌پزشکی
+        جایی‌یه که دقت و زیست‌شناسی به‌هم می‌رسن.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#about" class="btn btn-primary">بیشتر بخون</a>
+        <a href="#contact" class="btn btn-ghost">در تماس باش</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg id="specimenSvg" viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stage 1: heartbeat / EKG waveform -->
+        <path id="ekgPath"
+          d="M20 170 L70 170 L85 160 L100 180 L115 60 L130 260 L150 170 L180 170
+             L195 150 L210 190 L225 170 L260 170 L275 160 L290 180 L305 60 L320 260 L340 170 L380 170"
+          stroke="#ff6b35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Stage 2: code brackets -->
+        <path id="codePath"
+          d="M170 90 C150 90 145 105 145 125 C145 145 130 155 115 160 C130 165 145 175 145 195 C145 215 150 230 170 230
+             M230 90 C250 90 255 105 255 125 C255 145 270 155 285 160 C270 165 255 175 255 195 C255 215 250 230 230 230
+             M175 130 L215 130
+             M175 155 L205 155
+             M175 180 L225 180"
+          stroke="#b794ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
+        <!-- Stage 3: molar -->
+        <path id="molarPath"
+          d="M130 210 C120 250, 140 280, 165 275 C180 272, 178 245, 190 245 C202 245, 200 274, 218 276
+             C244 279, 262 248, 250 208 C244 188, 224 178, 200 180 C176 178, 138 188, 130 210 Z"
+          stroke="#ffb347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
+      </svg>
+      <span class="visual-caption" id="visualCaption">علائم حیاتی، کد، دندان</span>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-head reveal">
+      <span class="eyebrow">۰۱ &mdash; درباره‌ی من</span>
+      <h2>جایی بین دیش کشت باکتری و صفحه‌کلید</h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-lead reveal" id="about-lead">
+        من رهام هستم، دانش‌آموز رشته‌ی زیست‌شناسی در سیستم سمپاد تهران
+        &mdash; یه برنامه‌ی ملی برای دانش‌آموزهایی که می‌خوان زودتر از
+        حد معمول وارد عمق علوم بشن. زیست‌شناسی جایی‌یه که بیشترین توجهم
+        رو می‌گیره: اینکه سلول‌ها چطور خودشون رو سازمان‌دهی می‌کنن، چطور
+        ژنتیک بی‌صدا دستورالعمل همه‌چیزهای زنده رو می‌نویسه.
+      </p>
+      <p class="about-detail reveal" id="about-detail">
+        بیرون از زیست‌شناسی، دارم خودم برنامه‌نویسی یاد می‌گیرم، بیشتر
+        به‌خاطر همون چیزی که توی زیست‌شناسی هم دوست دارم: قوانین کوچیک
+        و دقیق که چیزی خیلی بزرگ‌تر از خودشون می‌سازن. به دندان‌پزشکی
+        هم علاقه‌ی رو به رشدی دارم &mdash; رشته‌ای که دقیقاً جایی‌یه که
+        دانش زیستی با مهارت دقیق و دستی ترکیب می‌شه. فعلاً تهران زندگی
+        می‌کنم، ولی ذهنم برای مهاجرت تحصیلی هم بازه.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="interests" id="interests">
+    <div class="section-head reveal">
+      <span class="eyebrow">۰۲ &mdash; علایق</span>
+      <h2>سه نمونه زیر ذره‌بین</h2>
+    </div>
+    <div class="specimen-grid">
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card1-tag">نمونه A</div>
+        <h3 id="card1-title">زیست‌شناسی</h3>
+        <p id="card1-desc">زیست‌شناسی سلولی، ژنتیک، و منطقی که موجودات زنده باهاش کار می‌کنن. رشته‌ی اصلی من، و عینکی که با اون به همه‌چیز دیگه هم نگاه می‌کنم.</p>
+      </article>
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card2-tag">نمونه B</div>
+        <h3 id="card2-title">برنامه‌نویسی</h3>
+        <p id="card2-desc">دارم یاد می‌گیرم با کد چیز بسازم &mdash; هنوز اول راهم، ولی به همون دلیلی که زیست‌شناسی رو دوست دارم جذبش شدم: قوانین کوچیک، نتیجه‌های بزرگ.</p>
+      </article>
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card3-tag">نمونه C</div>
+        <h3 id="card3-title">دندان‌پزشکی</h3>
+        <p id="card3-desc">یه علاقه‌ی رو به رشد &mdash; دانش زیستی که با دست، با دقت و مراقبت به‌کار گرفته می‌شه. یکی از مسیرهایی که جدی بهش فکر می‌کنم.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PATH / TIMELINE -->
+  <section class="path" id="path">
+    <div class="section-head reveal">
+      <span class="eyebrow">۰۳ &mdash; مسیر</span>
+      <h2>این مسیر داره کجا می‌ره</h2>
+    </div>
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <span class="timeline-index">۰۱</span>
+        <div class="timeline-body">
+          <h3 id="tl1-title">الان</h3>
+          <p id="tl1-desc">درس خوندن توی رشته‌ی زیست‌شناسی سمپاد در تهران.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">۰۲</span>
+        <div class="timeline-body">
+          <h3 id="tl2-title">همزمان</h3>
+          <p id="tl2-desc">یادگیری خودآموز پایه‌های برنامه‌نویسی، پروژه به پروژه.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">۰۳</span>
+        <div class="timeline-body">
+          <h3 id="tl3-title">در حال بررسی</h3>
+          <p id="tl3-desc">دندان‌پزشکی، رشته‌ای که زیست‌شناسی توش با دست کار می‌شه.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">۰۴</span>
+        <div class="timeline-body">
+          <h3 id="tl4-title">پیش رو</h3>
+          <p id="tl4-desc">باز نگه داشتن مسیر برای تحصیل در خارج از کشور، به‌عنوان قدم بعدی.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-head reveal">
+      <span class="eyebrow">۰۴ &mdash; مهارت‌ها</span>
+      <h2>چی رو می‌ذارم روی میز</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-row reveal">
+        <span class="skill-name" id="skill1-name">مبانی زیست‌شناسی</span>
+        <div class="skill-bar" id="skill1-bar"><span style="--level:88%"></span></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name" id="skill2-name">ژنتیک</span>
+        <div class="skill-bar" id="skill2-bar"><span style="--level:75%"></span></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name" id="skill3-name">مبانی برنامه‌نویسی</span>
+        <div class="skill-bar" id="skill3-bar"><span style="--level:55%"></span></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name" id="skill4-name">کنجکاوی علمی</span>
+        <div class="skill-bar" id="skill4-bar"><span style="--level:97%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner reveal">
+      <span class="eyebrow">۰۵ &mdash; تماس</span>
+      <h2>سلام بده</h2>
+      <p id="contact-desc">برای گفت‌وگو درباره‌ی زیست‌شناسی، کد، دندان‌پزشکی، یا هرجایی که این سه به‌هم می‌رسن، در دسترسم.</p>
+      <a class="contact-email ltr" id="contact-email" href="mailto:your-email@example.com">your-email@example.com</a>
+      <div class="contact-socials">
+        <a href="#" id="contact-linkedin" aria-label="LinkedIn">لینکدین</a>
+        <a href="#" id="contact-github" aria-label="GitHub">گیت‌هاب</a>
+        <a href="#" id="contact-instagram" aria-label="Instagram">اینستاگرام</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> رهام محمدی. تهران، ایران. &middot; <a href="admin/" style="color:var(--gray);">ویرایش محتوا</a></p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

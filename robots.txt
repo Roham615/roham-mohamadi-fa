@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roham615.github.io/roham-mohamadi-fa/sitemap.xml
