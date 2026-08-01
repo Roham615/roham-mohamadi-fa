@@ -200,7 +200,7 @@ a{color:inherit; text-decoration:none;}
 
 .settings-panel{
   position:fixed;
-  top:70px; right:6vw;
+  top:70px; left:6vw; right:auto;
   z-index:55;
   width:260px;
   background:var(--panel);
@@ -283,7 +283,7 @@ a{color:inherit; text-decoration:none;}
 .settings-link:hover{color:var(--orange);}
 
 @media (max-width:480px){
-  .settings-panel{right:4vw; width:calc(100vw - 8vw);}
+  .settings-panel{left:4vw; right:auto; width:calc(100vw - 8vw);}
 }
 
 /* ===== Layout helpers ===== */
@@ -667,7 +667,3 @@ body{direction:rtl; text-align:right;}
 .nav-links{direction:rtl;}
 .hero-actions{direction:rtl;}
 .contact-socials{direction:rtl;}
-.settings-panel{right:auto; left:6vw;}
-@media (max-width:480px){
-  .settings-panel{left:4vw;}
-}
