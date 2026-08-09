@@ -73,6 +73,20 @@
   #loginScreen .card{max-width:460px;}
   footer{margin-top:2.5rem; color:var(--gray); font-family:var(--mono); font-size:0.72rem;}
   .section-actions{position:sticky; bottom:0; background:linear-gradient(to top, var(--void) 60%, transparent); padding:1.5rem 0 0.5rem; max-width:640px;}
+  .ach-block{padding:0.9rem 0; border-top:1px solid var(--line);}
+  .ach-block:first-child{border-top:none; padding-top:0;}
+  .ach-preview{
+    width:100%; max-width:180px; aspect-ratio:4/3; border-radius:8px;
+    background:var(--void); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; margin-top:0.5rem; color:var(--gray); font-size:0.72rem; font-family:var(--mono);
+  }
+  .ach-preview img{width:100%; height:100%; object-fit:cover;}
+  input[type=file]{
+    width:100%; background:var(--void); border:1px solid var(--line);
+    border-radius:8px; padding:0.6rem 0.8rem; color:var(--gray);
+    font-family:var(--body); font-size:0.85rem;
+  }
 </style>
 </head>
 <body>
@@ -150,6 +164,19 @@
   </div>
 
   <div class="card">
+    <h2>Right Now</h2>
+    <p class="hint" style="margin-top:0;">Shown as a small highlighted line under the hero. Update this whenever something changes.</p>
+    <label>What are you doing right now?</label>
+    <textarea id="f_now_text"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>Achievements &mdash; 3 cards</h2>
+    <p class="hint" style="margin-top:0;">Optional photo for each (medal, certificate, etc). Uploading a new photo replaces the old one.</p>
+    <div id="achievementsFields"></div>
+  </div>
+
+  <div class="card">
     <h2>Contact</h2>
     <label>Description</label>
     <textarea id="f_contact_description"></textarea>
@@ -200,6 +227,36 @@ buildRepeatingFields('skillsFields',
   [{id:'skill1',label:'Skill 1'},{id:'skill2',label:'Skill 2'},{id:'skill3',label:'Skill 3'},{id:'skill4',label:'Skill 4'}],
   [{name:'name',label:'Name'},{name:'level',label:'Level (0-100)',type:'number'}]
 );
+
+function buildAchievementFields(){
+  const container = document.getElementById('achievementsFields');
+  const keys = ['ach1','ach2','ach3'];
+  container.innerHTML = keys.map((key, i) => `
+    <div class="ach-block">
+      <label style="margin-top:0;">Achievement ${i+1}</label>
+      <label>Title</label>
+      <input type="text" id="f_${key}_title">
+      <label>Short note</label>
+      <textarea id="f_${key}_note"></textarea>
+      <label>Photo (optional)</label>
+      <input type="file" accept="image/*" id="f_${key}_file" onchange="previewAchievementFile('${key}')">
+      <input type="hidden" id="f_${key}_existingImage">
+      <div class="ach-preview" id="f_${key}_preview">No photo yet</div>
+    </div>
+  `).join('');
+}
+buildAchievementFields();
+
+function previewAchievementFile(key){
+  const input = document.getElementById(`f_${key}_file`);
+  const preview = document.getElementById(`f_${key}_preview`);
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    preview.innerHTML = `<img src="${e.target.result}" alt="preview">`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
 
 function b64EncodeUnicode(str){
   return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1)));
@@ -269,6 +326,17 @@ function fillForm(data){
     set(`f_${k}_name`, data.skills?.[k]?.name);
     set(`f_${k}_level`, data.skills?.[k]?.level);
   });
+  set('f_now_text', data.now?.text);
+  ['ach1','ach2','ach3'].forEach(key => {
+    const a = data.achievements?.[key];
+    set(`f_${key}_title`, a?.title);
+    set(`f_${key}_note`, a?.note);
+    set(`f_${key}_existingImage`, a?.image || '');
+    const preview = document.getElementById(`f_${key}_preview`);
+    if (preview){
+      preview.innerHTML = a?.image ? `<img src="../${a.image}" alt="current">` : 'No photo yet';
+    }
+  });
   set('f_contact_description', data.contact?.description);
   set('f_contact_email', data.contact?.email);
   set('f_contact_linkedin', data.contact?.linkedin);
@@ -284,7 +352,8 @@ function collectForm(){
       lastName: get('f_hero_lastName'), subtitle: get('f_hero_subtitle')
     },
     about: { lead: get('f_about_lead'), detail: get('f_about_detail') },
-    interests: {}, timeline: {}, skills: {},
+    interests: {}, timeline: {}, skills: {}, achievements: {},
+    now: { text: get('f_now_text') },
     contact: {
       description: get('f_contact_description'), email: get('f_contact_email'),
       linkedin: get('f_contact_linkedin'), github: get('f_contact_github'),
@@ -300,14 +369,68 @@ function collectForm(){
   ['skill1','skill2','skill3','skill4'].forEach(k => {
     obj.skills[k] = { name: get(`f_${k}_name`), level: Number(get(`f_${k}_level`)) || 0 };
   });
+  ['ach1','ach2','ach3'].forEach(k => {
+    obj.achievements[k] = {
+      title: get(`f_${k}_title`), note: get(`f_${k}_note`),
+      image: get(`f_${k}_existingImage`)
+    };
+  });
   return obj;
+}
+
+async function uploadAchievementImage(key){
+  const input = document.getElementById(`f_${key}_file`);
+  if (!input.files || !input.files[0]) return null;
+  const file = input.files[0];
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+  const path = `images/achievements/${key}.${ext}`;
+
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  let existingSha = null;
+  try{
+    const getRes = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/${path}?ref=${state.branch}`, {
+      headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' }
+    });
+    if (getRes.ok){
+      const getData = await getRes.json();
+      existingSha = getData.sha;
+    }
+  }catch(e){ /* no existing file at this path, that's fine */ }
+
+  const putBody = { message: `Update achievement photo (${key})`, content: base64, branch: state.branch };
+  if (existingSha) putBody.sha = existingSha;
+
+  const putRes = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(putBody)
+  });
+  if (!putRes.ok){
+    const body = await putRes.json().catch(() => ({}));
+    throw new Error(`Photo upload failed (${key}): ${body.message || putRes.status}`);
+  }
+  return path;
 }
 
 async function save(){
   const btn = document.getElementById('saveBtn');
   btn.disabled = true;
-  btn.textContent = 'Saving…';
   try{
+    btn.textContent = 'Uploading photos…';
+    for (const key of ['ach1', 'ach2', 'ach3']){
+      const newPath = await uploadAchievementImage(key);
+      if (newPath){
+        document.getElementById(`f_${key}_existingImage`).value = newPath;
+      }
+    }
+
+    btn.textContent = 'Saving…';
     const newContent = JSON.stringify(collectForm(), null, 2);
     const res = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/data/content.json`, {
       method: 'PUT',
