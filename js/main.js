@@ -50,6 +50,21 @@
           }
         });
       }
+      if (data.now){
+        setText('now-text', data.now.text);
+      }
+      if (data.achievements){
+        ['ach1','ach2','ach3'].forEach((key, i) => {
+          const a = data.achievements[key];
+          if (!a) return;
+          setText(`ach${i+1}-title`, a.title);
+          setText(`ach${i+1}-note`, a.note);
+          const wrap = document.getElementById(`ach${i+1}-image-wrap`);
+          if (wrap && a.image){
+            wrap.innerHTML = `<img src="${a.image}" alt="${(a.title || '').replace(/"/g,'')}" loading="lazy">`;
+          }
+        });
+      }
       if (data.contact){
         setText('contact-desc', data.contact.description);
         const emailEl = document.getElementById('contact-email');
