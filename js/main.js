@@ -234,7 +234,7 @@ skillBars.forEach(el => skillObserver.observe(el));
   if (!ekgPath || !codePath || !molarPath) return;
 
   const stages = [
-    { path: ekgPath, label: 'علائم حیاتی', duration: 1500 },
+    { path: ekgPath, label: 'قلب', duration: 1500 },
     { path: codePath, label: 'کد', duration: 1600 },
     { path: molarPath, label: 'دندان', duration: 1400 }
   ];
@@ -264,7 +264,7 @@ skillBars.forEach(el => skillObserver.observe(el));
     path.style.transition = `stroke-dashoffset ${stage.duration}ms cubic-bezier(.65,0,.35,1)`;
     requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
 
-    if (caption) caption.textContent = `علائم حیاتی، کد، دندان \u2014 الان: ${stage.label}`;
+    if (caption) caption.textContent = `قلب، کد، دندان \u2014 الان: ${stage.label}`;
 
     timer = setTimeout(() => {
       // fade this stage out
