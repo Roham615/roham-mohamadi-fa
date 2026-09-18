@@ -69,26 +69,11 @@
 <body>
 
 <div class="bg-mesh"></div>
-<svg class="bg-girih" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs>
-    <pattern id="girihTile" width="120" height="120" patternUnits="userSpaceOnUse">
-      <g stroke="#ffcb77" stroke-width="0.9" fill="none">
-        <rect x="35" y="35" width="50" height="50" transform="rotate(0 60 60)"/>
-        <rect x="35" y="35" width="50" height="50" transform="rotate(45 60 60)"/>
-        <circle cx="60" cy="60" r="6"/>
-        <circle cx="0" cy="0" r="4"/>
-        <circle cx="120" cy="0" r="4"/>
-        <circle cx="0" cy="120" r="4"/>
-        <circle cx="120" cy="120" r="4"/>
-        <line x1="0" y1="0" x2="35" y2="35"/>
-        <line x1="120" y1="0" x2="85" y2="35"/>
-        <line x1="0" y1="120" x2="35" y2="85"/>
-        <line x1="120" y1="120" x2="85" y2="85"/>
-      </g>
-    </pattern>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#girihTile)"/>
-</svg>
+<div class="floating-orbs" aria-hidden="true">
+  <span class="orb orb-1"></span>
+  <span class="orb orb-2"></span>
+  <span class="orb orb-3"></span>
+</div>
 <canvas id="bg-canvas"></canvas>
 <div class="cursor-glow" id="cursorGlow"></div>
 <svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg">
