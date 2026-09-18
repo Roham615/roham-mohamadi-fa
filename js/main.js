@@ -234,7 +234,7 @@ skillBars.forEach(el => skillObserver.observe(el));
   if (!ekgPath || !codePath || !molarPath) return;
 
   const stages = [
-    { path: ekgPath, label: 'قلب', duration: 1500 },
+    { path: ekgPath, label: 'علائم حیاتی', duration: 1500 },
     { path: codePath, label: 'کد', duration: 1600 },
     { path: molarPath, label: 'دندان', duration: 1400 }
   ];
@@ -264,7 +264,7 @@ skillBars.forEach(el => skillObserver.observe(el));
     path.style.transition = `stroke-dashoffset ${stage.duration}ms cubic-bezier(.65,0,.35,1)`;
     requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
 
-    if (caption) caption.textContent = `قلب، کد، دندان \u2014 الان: ${stage.label}`;
+    if (caption) caption.textContent = `علائم حیاتی، کد، دندان \u2014 الان: ${stage.label}`;
 
     timer = setTimeout(() => {
       // fade this stage out
@@ -326,7 +326,7 @@ skillBars.forEach(el => skillObserver.observe(el));
         const dx = a.x - b.x, dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 130){
-          ctx.strokeStyle = `rgba(255,107,53,${(1 - dist / 130) * 0.14})`;
+          ctx.strokeStyle = `rgba(255,111,97,${(1 - dist / 130) * 0.14})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -338,7 +338,7 @@ skillBars.forEach(el => skillObserver.observe(el));
     for (const n of nodes){
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = n.violet ? 'rgba(155,107,255,0.45)' : 'rgba(255,179,71,0.4)';
+      ctx.fillStyle = n.violet ? 'rgba(255,158,138,0.45)' : 'rgba(255,203,119,0.4)';
       ctx.fill();
     }
     if (!prefersReduced && document.documentElement.dataset.motion !== 'reduced') requestAnimationFrame(tick);
