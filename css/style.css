@@ -87,19 +87,19 @@ a{color:inherit; text-decoration:none;}
   width:420px; height:420px;
   top:-8%; right:-6%;
   background:radial-gradient(circle, rgba(255,111,97,0.45), transparent 70%);
-  animation:orbFloat1 22s ease-in-out infinite;
+  animation:orbFloat1 7s ease-in-out infinite;
 }
 .orb-2{
   width:360px; height:360px;
   bottom:-10%; left:-8%;
   background:radial-gradient(circle, rgba(255,203,119,0.35), transparent 70%);
-  animation:orbFloat2 26s ease-in-out infinite;
+  animation:orbFloat2 9s ease-in-out infinite;
 }
 .orb-3{
   width:300px; height:300px;
   top:40%; left:55%;
   background:radial-gradient(circle, rgba(255,158,138,0.3), transparent 70%);
-  animation:orbFloat3 30s ease-in-out infinite;
+  animation:orbFloat3 11s ease-in-out infinite;
 }
 @keyframes orbFloat1{
   0%,100%{transform:translate(0,0) scale(1);}
@@ -710,11 +710,10 @@ h2{
   top:0; left:0;
   width:480px; height:480px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,111,97,0.14) 0%, rgba(255,158,138,0.09) 50%, transparent 75%);
+  background:radial-gradient(circle, rgba(255,111,97,0.22) 0%, rgba(255,158,138,0.12) 50%, transparent 75%);
   transform:translate(-50%, -50%);
   pointer-events:none;
   z-index:2;
-  mix-blend-mode:screen;
   opacity:0;
   transition:opacity 0.5s ease;
 }
