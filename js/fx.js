@@ -2,7 +2,7 @@
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const now=$('#now');
 if(now){
-  const half=['زیست‌شناسی','برنامه‌نویسی','دندان‌پزشکی','ژنتیک','کنجکاوی','تهران'].map(w=>`<span>${w}</span><span>✦</span>`).join('');
+  const half=['زیست‌شناسی','برنامه‌نویسی','پزشکی','istj','دانش آموز','تهران'].map(w=>`<span>${w}</span><span>✦</span>`).join('');
   const m=document.createElement('div');m.className='marquee';m.setAttribute('aria-hidden','true');
   m.innerHTML=`<div class="marquee-track">${half+half+half+half}</div>`;
   now.before(m);
