@@ -1,336 +1,841 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<script>
-(function(){
-  try{
-    if (localStorage.getItem('rm-theme') === 'light') document.documentElement.setAttribute('data-theme','light');
-    if (localStorage.getItem('rm-motion') === 'reduced') document.documentElement.setAttribute('data-motion','reduced');
-  }catch(e){}
-})();
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رهام محمدی — دانش‌آموز رشته‌ی تجربی، تهران</title>
-<meta name="description" content="رهام محمدی، دانش‌آموز رشته‌ی تجربی در تهران، علاقه‌مند به دندان‌پزشکی و برنامه‌نویسی. صفحه‌ی رسمی معرفی.">
-<meta name="keywords" content="رهام محمدی, رهام محمدی تهران, رهام محمدی , رهام محمدی زیست شناسی">
-<meta name="author" content="رهام محمدی">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://roham615.github.io/roham-mohamadi-fa/">
+/* ===== Tokens ===== */
+:root{
+  --void:#0b0f1e;
+  --panel:#131a2e;
+  --panel-2:#1b2440;
+  --orange:#ff6f61;
+  --amber:#ffcb77;
+  --violet:#ff9e8a;
+  --violet-soft:#ffb3a2;
+  --bone:#eef1f8;
+  --gray:#8892a8;
+  --line:rgba(238,241,248,0.1);
 
-<link rel="alternate" hreflang="fa" href="https://roham615.github.io/roham-mohamadi-fa/">
-<link rel="alternate" hreflang="en" href="https://roham615.github.io/roham-mohamadi-site/">
+  --display:"Vazirmatn", Tahoma, sans-serif;
+  --body:"Vazirmatn", Tahoma, sans-serif;
+  --mono:"Vazirmatn", Tahoma, sans-serif;
 
-<!-- Open Graph -->
-<meta property="og:type" content="profile">
-<meta property="og:title" content="رهام محمدی — دانش‌آموز رشته‌ تجربی">
-<meta property="og:description" content="صفحه‌ی شخصی رهام محمدی: دانش‌آموز رشته‌ی تجربی در تهران، علاقه‌مند به زیست ، دندان‌پزشکی و برنامه‌نویسی.">
-<meta property="og:url" content="https://roham615.github.io/roham-mohamadi-fa/">
-<meta property="og:site_name" content="رهام محمدی">
-<meta property="og:locale" content="fa_IR">
-<meta property="profile:first_name" content="رهام">
-<meta property="profile:last_name" content="محمدی">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="رهام محمدی — دانش‌آموز رشته‌ی تجربی">
-<meta name="twitter:description" content="دانش‌آموز رشته‌ی زیست‌شناسی در تهران، علاقه‌مند به زیست، دندان‌پزشکی و برنامه‌نویسی.">
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%230a0a0d%22/><text x=%2250%22 y=%2266%22 font-size=%2260%22 fill=%22%23ff6b35%22 text-anchor=%22middle%22 font-family=%22Georgia%22>R</text></svg>">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "رهام محمدی",
-  "alternateName": ["Roham Mohamadi", "رهام"],
-  "url": "https://roham615.github.io/roham-mohamadi-fa/",
-  "jobTitle": "دانش‌آموز دبیرستان",
-  "affiliation": {
-    "@type": "EducationalOrganization",
-    "name": "علامه حلی 4"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "تهران",
-    "addressCountry": "IR"
-  },
-  "knowsAbout": ["زیست‌شناسی", "تجربی", "دندان‌پزشکی", "برنامه‌نویسی", "علوم کامپیوتر"],
-  "description": "رهام محمدی، دانش‌آموز رشته‌ی زیست‌شناسی در تهران، علاقه‌مند به زیست، دندان‌پزشکی و برنامه‌نویسی است."
+  --ease:cubic-bezier(.22,1,.36,1);
 }
-</script>
-</head>
-<body>
 
-<div class="bg-mesh"></div>
-<div class="floating-orbs" aria-hidden="true">
-  <span class="orb orb-1"></span>
-  <span class="orb orb-2"></span>
-  <span class="orb orb-3"></span>
-</div>
-<canvas id="bg-canvas"></canvas>
-<div class="cursor-glow" id="cursorGlow"></div>
-<svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg">
-  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
-  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
-</svg>
+[data-theme="light"]{
+  --void:#faf7f2;
+  --panel:#ffffff;
+  --panel-2:#f1ece3;
+  --bone:#1a1a1f;
+  --gray:#68676f;
+  --line:rgba(10,10,13,0.1);
+}
+[data-theme="light"] body{background:var(--void);}
+[data-theme="light"] .nav{background:linear-gradient(to bottom, rgba(250,247,242,0.9), transparent);}
+[data-theme="light"] .switch{background:var(--panel-2);}
+[data-theme="light"] .theme-toggle{background:var(--panel-2);}
 
-<div class="progress-bar" id="progressBar"></div>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-<header class="nav" id="nav">
-  <a href="#top" class="nav-mark">ر.م</a>
-  <div class="nav-right">
-    <nav class="nav-links">
-      <a href="#about">درباره</a>
-      <a href="#interests">علایق</a>
-      <a href="#path">مسیر</a>
-      <a href="#skills">مهارت‌ها</a>
-      <a href="#achievements">خاطره‌ها</a>
-      <a href="#contact">تماس</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="باز کردن منو" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <button class="settings-btn" id="settingsBtn" aria-label="تنظیمات سایت" aria-expanded="false">&#8942;</button>
-  </div>
-</header>
+html{scroll-behavior:smooth;}
 
-<div class="settings-panel" id="settingsPanel">
-  <div class="settings-row">
-    <span>پوسته</span>
-    <div class="theme-toggle" role="group" aria-label="پوسته">
-      <button type="button" class="theme-opt active" data-theme-choice="dark">تیره</button>
-      <button type="button" class="theme-opt" data-theme-choice="light">روشن</button>
-    </div>
-  </div>
-  <div class="settings-row">
-    <span>کاهش انیمیشن</span>
-    <button type="button" class="switch" id="motionSwitch" role="switch" aria-checked="false"><span></span></button>
-  </div>
-  <a href="admin/" class="settings-link">ویرایش محتوا</a>
-  <a href="https://roham615.github.io/roham-mohamadi-site/" class="settings-link">نسخه‌ی انگلیسی سایت</a>
-</div>
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+html[data-motion="reduced"]{scroll-behavior:auto;}
+html[data-motion="reduced"] *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">درباره</a>
-  <a href="#interests">علایق</a>
-  <a href="#path">مسیر</a>
-  <a href="#skills">مهارت‌ها</a>
-  <a href="#achievements">خاطره‌ها</a>
-  <a href="#contact">تماس</a>
-</div>
+body{
+  background:var(--void);
+  color:var(--bone);
+  font-family:var(--body);
+  line-height:1.6;
+  overflow-x:hidden;
+  position:relative;
+}
 
-<main>
+a{color:inherit; text-decoration:none;}
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-inner">
-      <p class="eyebrow reveal" id="hero-eyebrow">تهران، ایران &mdash;  رشته‌ی تجربی</p>
-      <h1 class="hero-name reveal">
-        <span class="hero-name-line" id="hero-first-name">رهام</span>
-        <span class="hero-name-line hero-name-accent" id="hero-last-name">محمدی</span>
-      </h1>
-      <p class="hero-sub reveal" id="hero-subtitle">
-        دانش‌آموز رشته‌ی تجربی 
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#about" class="btn btn-primary">ادامه</a>
-        <a href="#contact" class="btn btn-ghost">ارتباط</a>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <svg id="specimenSvg" viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Stage 1: heartbeat / EKG waveform -->
-        <path id="ekgPath"
-          d="M20 170 L70 170 L85 160 L100 180 L115 60 L130 260 L150 170 L180 170
-             L195 150 L210 190 L225 170 L260 170 L275 160 L290 180 L305 60 L320 260 L340 170 L380 170"
-          stroke="#ff6f61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <!-- Stage 2: code brackets -->
-        <path id="codePath"
-          d="M170 90 C150 90 145 105 145 125 C145 145 130 155 115 160 C130 165 145 175 145 195 C145 215 150 230 170 230
-             M230 90 C250 90 255 105 255 125 C255 145 270 155 285 160 C270 165 255 175 255 195 C255 215 250 230 230 230
-             M175 130 L215 130
-             M175 155 L205 155
-             M175 180 L225 180"
-          stroke="#ff9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
-        <!-- Stage 3: molar -->
-        <path id="molarPath"
-          d="M130 210 C120 250, 140 280, 165 275 C180 272, 178 245, 190 245 C202 245, 200 274, 218 276
-             C244 279, 262 248, 250 208 C244 188, 224 178, 200 180 C176 178, 138 188, 130 210 Z"
-          stroke="#ffcb77" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
-      </svg>
-      <span class="visual-caption" id="visualCaption">قلب، کد، دندان</span>
-    </div>
-    <div class="scroll-cue" aria-hidden="true"><span></span></div>
-  </section>
+::selection{background:var(--orange); color:var(--void);}
 
-  <!-- RIGHT NOW -->
-  <section class="now-banner reveal" id="now">
-    <span class="now-dot" aria-hidden="true"></span>
-    <span class="now-label">الان</span>
-    <p class="now-text" id="now-text">.</p>
-  </section>
+/* ===== Background canvas (molecular node field) ===== */
+/* ===== Gradient mesh background ===== */
+.bg-mesh{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,111,97,0.18), transparent 45%),
+    radial-gradient(circle at 85% 12%, rgba(255,203,119,0.12), transparent 50%),
+    radial-gradient(circle at 78% 88%, rgba(255,158,138,0.16), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(40,70,130,0.55), transparent 55%),
+    var(--void);
+}
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="section-head reveal">
-      <span class="eyebrow">۰۱ &mdash; درباره‌ی من</span>
-      <h2>علاقه مند به علوم</h2>
-    </div>
-    <div class="about-grid">
-      <p class="about-lead reveal" id="about-lead">
-        من رهام هستم، دانش‌آموز رشته‌ی زیست‌شناسی در تهران
-        &mdash; 
-        
-       
-      </p>
-      <p class="about-detail reveal" id="about-detail">
-        به جز از زیست‌شناسی، دارم خودم برنامه‌نویسی یاد می‌گیرم.</p>
-    </div>
-  </section>
+/* ===== Floating soft light orbs ===== */
+.floating-orbs{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.5;
+}
+.orb-1{
+  width:420px; height:420px;
+  top:-8%; right:-6%;
+  background:radial-gradient(circle, rgba(255,111,97,0.45), transparent 70%);
+  animation:orbFloat1 7s ease-in-out infinite;
+}
+.orb-2{
+  width:360px; height:360px;
+  bottom:-10%; left:-8%;
+  background:radial-gradient(circle, rgba(255,203,119,0.35), transparent 70%);
+  animation:orbFloat2 9s ease-in-out infinite;
+}
+.orb-3{
+  width:300px; height:300px;
+  top:40%; left:55%;
+  background:radial-gradient(circle, rgba(255,158,138,0.3), transparent 70%);
+  animation:orbFloat3 11s ease-in-out infinite;
+}
+@keyframes orbFloat1{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-30px,40px) scale(1.08);}
+}
+@keyframes orbFloat2{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(40px,-30px) scale(1.1);}
+}
+@keyframes orbFloat3{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-25px,-35px) scale(0.95);}
+}
+@media (max-width:720px){
+  .orb{opacity:0.35;}
+}
+@media (prefers-reduced-motion: reduce){
+  .orb{animation:none;}
+}
 
-  <!-- INTERESTS -->
-  <section class="interests" id="interests">
-    <div class="section-head reveal">
-      <span class="eyebrow">۰۲ &mdash; علایق</span>
-      <h2>سه علاقه زیر ذره‌بین</h2>
-    </div>
-    <div class="specimen-grid">
-      <article class="specimen-card reveal">
-        <div class="specimen-tag" id="card1-tag">نمونه A</div>
-        <h3 id="card1-title">زیست‌شناسی</h3>
-        <p id="card1-desc">زیست‌شناسی سلولی، ژنتیک، و منطقی که موجودات زنده باهاش کار می‌کنن. رشته‌ی اصلی من..</p>
-      </article>
-      <article class="specimen-card reveal">
-        <div class="specimen-tag" id="card2-tag">نمونه B</div>
-        <h3 id="card2-title">برنامه‌نویسی</h3>
-        <p id="card2-desc">دارم یاد می‌گیرم با کد پروژه بسازم &mdash; هنوز اول راهم،.</p>
-      </article>
-      <article class="specimen-card reveal">
-        <div class="specimen-tag" id="card3-tag">نمونه C</div>
-        <h3 id="card3-title">دندان‌پزشکی</h3>
-        <p id="card3-desc">یه علاقه‌ی رو به رشد &mdash; دانشی که با دست، با دقت و مراقبت به‌کار گرفته می‌شه. یکی از مسیرهایی که جدی بهش فکر می‌کنم.</p>
-      </article>
-    </div>
-  </section>
+/* Decorative star mark before section eyebrows */
+.eyebrow::before{
+  content:"";
+  display:inline-block;
+  width:11px; height:11px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23ff6f61' stroke-width='1.6'%3E%3Crect x='4' y='4' width='16' height='16'/%3E%3Crect x='4' y='4' width='16' height='16' transform='rotate(45 12 12)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:contain;
+  background-repeat:no-repeat;
+  flex-shrink:0;
+  vertical-align:middle;
+  margin-inline-end:0.5rem;
+}
 
-  <!-- PATH / TIMELINE -->
-  <section class="path" id="path">
-    <div class="section-head reveal">
-      <span class="eyebrow">۰۳ &mdash; مسیر</span>
-      <h2>این مسیر داره کجا می‌ره</h2>
-    </div>
-    <ol class="timeline">
-      <li class="timeline-item reveal">
-        <span class="timeline-index">۰۱</span>
-        <div class="timeline-body">
-          <h3 id="tl1-title">الان</h3>
-          <p id="tl1-desc">درس خوندن توی رشته‌ی تجربی در تهران.</p>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <span class="timeline-index">۰۲</span>
-        <div class="timeline-body">
-          <h3 id="tl2-title">همزمان</h3>
-          <p id="tl2-desc">یادگیری خودآموز پایه‌های برنامه‌نویسی، پروژه به پروژه.</p>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <span class="timeline-index">۰۳</span>
-        <div class="timeline-body">
-          <h3 id="tl3-title">در حال بررسی</h3>
-          <p id="tl3-desc">دندان‌پزشکی، رشته‌ای که زیست‌شناسی توش با دست به کار گرفته می‌شه.</p>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <span class="timeline-index">۰۴</span>
-        <div class="timeline-body">
-          <h3 id="tl4-title">پیش رو</h3>
-          <p id="tl4-desc">باز نگه داشتن مسیر برای تحصیل در خارج از کشور، به‌عنوان قدم بعدی.</p>
-        </div>
-      </li>
-    </ol>
-  </section>
+#bg-canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  opacity:0.55;
+  pointer-events:none;
+}
 
-  <!-- SKILLS -->
-  <section class="skills" id="skills">
-    <div class="section-head reveal">
-      <span class="eyebrow">۰۴ &mdash; مهارت‌ها</span>
-      <h2>مهارت های من</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-row reveal">
-        <span class="skill-name" id="skill1-name"> زیست‌شناسی</span>
-        <div class="skill-bar" id="skill1-bar"><span style="--level:88%"></span></div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-name" id="skill2-name">زبان انگلیسی</span>
-        <div class="skill-bar" id="skill2-bar"><span style="--level:60%"></span></div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-name" id="skill3-name">مبانی برنامه‌نویسی</span>
-        <div class="skill-bar" id="skill3-bar"><span style="--level:55%"></span></div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-name" id="skill4-name">کنجکاوی</span>
-        <div class="skill-bar" id="skill4-bar"><span style="--level:97%"></span></div>
-      </div>
-    </div>
-  </section>
+/* ===== Progress bar ===== */
+.progress-bar{
+  position:fixed;
+  top:0; left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg, var(--orange), var(--amber));
+  z-index:100;
+  transition:width 0.1s linear;
+}
 
-  <!-- ACHIEVEMENTS -->
-  <section class="achievements" id="achievements">
-    <div class="section-head reveal">
-      <span class="eyebrow">۰۵ &mdash; خاطره‌ها</span>
-      <h2>چندتا خاطره که ارزش نگه داشتن دارن</h2>
-    </div>
-    <div class="achievements-grid">
-      <article class="achievement-card reveal">
-        <div class="achievement-image" id="ach1-image-wrap"><span class="achievement-placeholder">&#127942;</span></div>
-        <h3 id="ach1-title">خاطره ۱</h3>
-        <p id="ach1-note"></p>
-      </article>
-      <article class="achievement-card reveal">
-        <div class="achievement-image" id="ach2-image-wrap"><span class="achievement-placeholder">&#127942;</span></div>
-        <h3 id="ach2-title">خاطره ۲</h3>
-        <p id="ach2-note"></p>
-      </article>
-      <article class="achievement-card reveal">
-        <div class="achievement-image" id="ach3-image-wrap"><span class="achievement-placeholder">&#127942;</span></div>
-        <h3 id="ach3-title">خاطره ۳</h3>
-        <p id="ach3-note"></p>
-      </article>
-    </div>
-  </section>
+/* ===== Nav ===== */
+.nav{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 6vw;
+  backdrop-filter:blur(10px);
+  background:linear-gradient(to bottom, rgba(10,10,13,0.85), transparent);
+  transition:padding 0.3s var(--ease);
+}
+.nav-mark{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.25rem;
+  letter-spacing:0.02em;
+  color:var(--bone);
+  border:1px solid var(--line);
+  width:40px; height:40px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  transition:border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.nav-mark:hover{border-color:var(--orange); color:var(--orange); transform:rotate(-8deg);}
+.nav-right{display:flex; align-items:center; gap:1.4rem;}
+.nav-links{display:flex; gap:2.2rem;}
+.nav-links a{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--gray);
+  position:relative;
+  padding-bottom:4px;
+  transition:color 0.3s var(--ease);
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:0;
+  width:0%; height:1px;
+  background:var(--orange);
+  transition:width 0.35s var(--ease);
+}
+.nav-links a:hover{color:var(--bone);}
+.nav-links a:hover::after{width:100%;}
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-inner reveal">
-      <span class="eyebrow">۰۵ &mdash; تماس</span>
-      <h2>سلام😉</h2>
-      <p id="contact-desc">از طریق 3 نقطه بالای صفحه میتونید به نسخه انگلیسی سایت دسترسی داشته باشین.</p>
-      <a class="contact-email ltr" id="contact-email" href="mailto:your-email@example.com">your-email@example.com</a>
-      <div class="contact-socials">
-        <a href="#" id="contact-linkedin" aria-label="LinkedIn">لینکدین</a>
-        <a href="#" id="contact-github" aria-label="GitHub">گیت‌هاب</a>
-        <a href="#" id="contact-instagram" aria-label="Instagram">اینستاگرام</a>
-      </div>
-    </div>
-  </section>
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:36px; height:36px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  z-index:60;
+}
+.hamburger span{
+  display:block;
+  width:22px; height:2px;
+  background:var(--bone);
+  border-radius:2px;
+  transition:transform 0.35s var(--ease), opacity 0.25s var(--ease), background 0.3s var(--ease);
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg); background:var(--orange);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg); background:var(--orange);}
 
-</main>
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  z-index:45;
+  background:rgba(10,10,13,0.97);
+  backdrop-filter:blur(14px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.8rem;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-12px);
+  transition:opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.mobile-menu.open{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+.mobile-menu a{
+  font-family:var(--display);
+  font-size:1.8rem;
+  color:var(--bone);
+  transition:color 0.3s var(--ease);
+}
+.mobile-menu a:hover{color:var(--orange);}
 
-<footer class="site-footer">
-  <p>&copy; <span id="year"></span> رهام محمدی. تهران، ایران. &middot; <a href="admin/" style="color:var(--gray);">ویرایش محتوا</a></p>
-  <img class="visitor-badge" src="https://visitor-badge.laobi.icu/badge?page_id=roham615.roham-mohamadi-fa&left_text=%D8%A8%D8%A7%D8%B2%D8%AF%DB%8C%D8%AF&left_color=0b0f1e&right_color=ff6f61" alt="visitor count" loading="lazy">
-</footer>
+@media (max-width:720px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
+@media (min-width:721px){
+  .mobile-menu{display:none;}
+}
 
-<script src="js/main.js"></script>
-</body>
-</html>
+/* ===== Settings button + panel ===== */
+.settings-btn{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--bone);
+  width:36px; height:36px;
+  border-radius:50%;
+  font-size:1.1rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.settings-btn:hover{border-color:var(--orange); color:var(--orange); transform:rotate(90deg);}
+
+.settings-panel{
+  position:fixed;
+  top:70px; left:6vw; right:auto;
+  z-index:55;
+  width:260px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.1rem;
+  box-shadow:0 20px 50px -12px rgba(0,0,0,0.5);
+  opacity:0;
+  transform:translateY(-8px) scale(0.98);
+  pointer-events:none;
+  transition:opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.settings-panel.open{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.settings-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.5rem 0;
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--bone);
+}
+.theme-toggle{
+  display:flex;
+  background:var(--void);
+  border-radius:999px;
+  padding:2px;
+  gap:2px;
+}
+.theme-opt{
+  background:none;
+  border:none;
+  color:var(--gray);
+  font-family:var(--mono);
+  font-size:0.68rem;
+  text-transform:uppercase;
+  padding:0.35rem 0.7rem;
+  border-radius:999px;
+  cursor:pointer;
+  transition:background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.theme-opt.active{background:var(--orange); color:var(--void);}
+
+.switch{
+  width:38px; height:22px;
+  background:var(--void);
+  border:1px solid var(--line);
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+  padding:0;
+}
+.switch span{
+  position:absolute;
+  top:2px; left:2px;
+  width:16px; height:16px;
+  border-radius:50%;
+  background:var(--gray);
+  transition:transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.switch[aria-checked="true"] span{
+  transform:translateX(16px);
+  background:var(--orange);
+}
+
+.settings-link{
+  display:block;
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--gray);
+  padding:0.7rem 0;
+  border-top:1px solid var(--line);
+  margin-top:0.4rem;
+  transition:color 0.3s var(--ease);
+}
+.settings-link:hover{color:var(--orange);}
+
+@media (max-width:480px){
+  .settings-panel{left:4vw; right:auto; width:calc(100vw - 8vw);}
+}
+
+/* ===== Layout helpers ===== */
+main{position:relative; z-index:1;}
+section{
+  padding:8vw 6vw;
+  max-width:1200px;
+  margin:0 auto;
+  position:relative;
+}
+.section-head{margin-bottom:3.5rem;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--orange);
+  display:inline-block;
+  margin-bottom:0.9rem;
+}
+h2{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height:1.15;
+  max-width:16ch;
+}
+
+/* ===== Reveal on scroll ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Staggered entrance for grouped items */
+.specimen-card:nth-child(1){transition-delay:0s;}
+.specimen-card:nth-child(2){transition-delay:0.12s;}
+.specimen-card:nth-child(3){transition-delay:0.24s;}
+.timeline-item:nth-child(1){transition-delay:0s;}
+.timeline-item:nth-child(2){transition-delay:0.09s;}
+.timeline-item:nth-child(3){transition-delay:0.18s;}
+.timeline-item:nth-child(4){transition-delay:0.27s;}
+.skill-row:nth-child(1){transition-delay:0s;}
+.skill-row:nth-child(2){transition-delay:0.1s;}
+.skill-row:nth-child(3){transition-delay:0.2s;}
+.skill-row:nth-child(4){transition-delay:0.3s;}
+/* Reset the stagger delay once the entrance animation has played, so it
+   doesn't keep delaying unrelated transitions (like card tilt on hover) */
+.specimen-card.is-visible,
+.timeline-item.is-visible,
+.skill-row.is-visible{
+  transition-delay:0s;
+}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4vw;
+  flex-wrap:wrap;
+  padding-top:12vh;
+  padding-bottom:6vh;
+}
+.hero-inner{max-width:640px;}
+.hero-name{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(3.2rem, 9vw, 6.4rem);
+  line-height:0.96;
+  letter-spacing:-0.01em;
+  margin:0.6rem 0 1.6rem;
+}
+.hero-name-line{display:block;}
+.hero-name-accent{
+  font-weight:500;
+  background:linear-gradient(100deg, var(--orange), var(--violet-soft));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-sub{
+  font-size:1.08rem;
+  color:var(--gray);
+  max-width:46ch;
+  margin-bottom:2.2rem;
+}
+.hero-actions{display:flex; gap:1rem; flex-wrap:wrap;}
+
+.btn{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  padding:0.95rem 1.7rem;
+  border-radius:999px;
+  transition:transform 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  display:inline-block;
+}
+.btn-primary{
+  background:var(--orange);
+  color:var(--void);
+  box-shadow:0 0 0 0 rgba(255,111,97,0.5);
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px -8px rgba(255,111,97,0.6);
+}
+.btn-ghost{
+  border:1px solid var(--line);
+  color:var(--bone);
+}
+.btn-ghost:hover{
+  border-color:var(--orange);
+  color:var(--orange);
+  transform:translateY(-3px);
+}
+
+.hero-visual{
+  position:relative;
+  width:min(360px, 40vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.8rem;
+}
+#specimenSvg{width:100%; height:auto;}
+.visual-caption{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--gray);
+}
+@media (max-width:900px){
+  .hero-visual{width:70vw; margin:0 auto;}
+}
+
+.scroll-cue{
+  position:absolute;
+  bottom:3.5vh;
+  left:50%;
+  transform:translateX(-50%);
+}
+.scroll-cue span{
+  display:block;
+  width:1px;
+  height:46px;
+  background:linear-gradient(to bottom, var(--orange), transparent);
+  animation:scrollpulse 2s var(--ease) infinite;
+}
+@keyframes scrollpulse{
+  0%{transform:scaleY(0.3); transform-origin:top; opacity:0.4;}
+  50%{transform:scaleY(1); transform-origin:top; opacity:1;}
+  100%{transform:scaleY(0.3); transform-origin:bottom; opacity:0.4;}
+}
+
+/* ===== About ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3.5rem;
+}
+.about-lead{
+  font-family:var(--display);
+  font-size:1.5rem;
+  font-weight:400;
+  line-height:1.45;
+  color:var(--bone);
+}
+.about-detail{
+  color:var(--gray);
+  font-size:1.02rem;
+  align-self:center;
+}
+@media (max-width:820px){
+  .about-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Interests / specimen cards ===== */
+.specimen-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.4rem;
+  perspective:1000px;
+}
+.specimen-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:2.2rem 1.8rem;
+  transition:transform 0.25s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
+  position:relative;
+  overflow:hidden;
+  transform:perspective(800px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg)) translateY(0);
+  will-change:transform;
+}
+.specimen-card::before{
+  content:"";
+  position:absolute;
+  top:-40%; left:-40%;
+  width:80%; height:80%;
+  background:radial-gradient(circle, var(--card-accent, var(--orange)) 0%, transparent 70%);
+  opacity:0;
+  transition:opacity 0.4s var(--ease);
+}
+.specimen-card:nth-child(1){ --card-accent: rgba(255,111,97,0.18); }
+.specimen-card:nth-child(2){ --card-accent: rgba(255,158,138,0.22); }
+.specimen-card:nth-child(3){ --card-accent: rgba(255,203,119,0.2); }
+.specimen-card:nth-child(1) .specimen-tag{ color:var(--orange); }
+.specimen-card:nth-child(2) .specimen-tag{ color:var(--violet-soft); }
+.specimen-card:nth-child(3) .specimen-tag{ color:var(--amber); }
+.specimen-card:nth-child(1):hover{ border-color:rgba(255,111,97,0.4); }
+.specimen-card:nth-child(2):hover{ border-color:rgba(255,158,138,0.45); }
+.specimen-card:nth-child(3):hover{ border-color:rgba(255,203,119,0.4); }
+.specimen-card:hover{
+  border-color:rgba(255,111,97,0.4);
+  background:var(--panel-2);
+}
+.specimen-card:hover::before{opacity:1;}
+.specimen-tag{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  color:var(--amber);
+  margin-bottom:1rem;
+}
+.specimen-card h3{
+  font-family:var(--display);
+  font-size:1.5rem;
+  font-weight:500;
+  margin-bottom:0.7rem;
+}
+.specimen-card p{color:var(--gray); font-size:0.95rem;}
+@media (max-width:820px){
+  .specimen-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Timeline ===== */
+.timeline{list-style:none;}
+.timeline-item{
+  display:flex;
+  gap:1.6rem;
+  padding:2rem 0;
+  border-top:1px solid var(--line);
+  align-items:baseline;
+  transition:padding-left 0.4s var(--ease);
+}
+.timeline-item:hover{padding-left:0.8rem;}
+.timeline-item:last-child{border-bottom:1px solid var(--line);}
+.timeline-index{
+  font-family:var(--mono);
+  color:var(--orange);
+  font-size:0.9rem;
+  min-width:2.5ch;
+}
+.timeline-body h3{
+  font-family:var(--display);
+  font-size:1.2rem;
+  font-weight:500;
+  margin-bottom:0.3rem;
+}
+.timeline-body p{color:var(--gray); font-size:0.96rem;}
+
+/* ===== Skills ===== */
+.skills-grid{display:flex; flex-direction:column; gap:1.6rem; max-width:640px;}
+.skill-row{display:flex; align-items:center; gap:1.4rem;}
+.skill-name{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  letter-spacing:0.03em;
+  min-width:190px;
+  color:var(--bone);
+}
+.skill-bar{
+  flex:1;
+  height:6px;
+  background:var(--panel);
+  border-radius:999px;
+  overflow:hidden;
+}
+.skill-bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background:linear-gradient(90deg, var(--orange), var(--amber));
+  transition:width 1.4s var(--ease);
+}
+.skill-row:nth-child(3) .skill-bar span{
+  background:linear-gradient(90deg, var(--orange), var(--violet-soft));
+}
+.skill-bar.animate span{width:var(--level);}
+
+/* ===== Contact ===== */
+.contact{text-align:center;}
+.contact-inner{
+  padding:5vw 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.contact h2{margin:0 auto 1rem; max-width:none;}
+.contact p{color:var(--gray); margin-bottom:1.8rem;}
+.contact-email{
+  font-family:var(--display);
+  font-size:clamp(1.4rem, 3vw, 2.1rem);
+  color:var(--orange);
+  border-bottom:1px solid transparent;
+  transition:border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.contact-email:hover{border-color:var(--orange); color:var(--amber);}
+.contact-socials{
+  display:flex; justify-content:center; gap:2rem;
+  margin-top:2.2rem;
+}
+.contact-socials a{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--gray);
+  transition:color 0.3s var(--ease);
+}
+.contact-socials a:hover{color:var(--bone);}
+
+/* ===== Footer ===== */
+.site-footer{
+  text-align:center;
+  padding:2.4rem 6vw 3rem;
+  color:var(--gray);
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.04em;
+  position:relative;
+  z-index:1;
+}
+
+/* ===== Ambient cursor glow ===== */
+.cursor-glow{
+  position:fixed;
+  top:0; left:0;
+  width:480px; height:480px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,111,97,0.22) 0%, rgba(255,158,138,0.12) 50%, transparent 75%);
+  transform:translate(-50%, -50%);
+  pointer-events:none;
+  z-index:2;
+  opacity:0;
+  transition:opacity 0.5s ease;
+}
+.cursor-glow.active{opacity:1;}
+@media (max-width:900px){
+  .cursor-glow{display:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  .cursor-glow{display:none;}
+}
+html[data-motion="reduced"] .cursor-glow{display:none;}
+
+/* ===== Grain texture overlay ===== */
+.grain-overlay{
+  position:fixed;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  opacity:0.035;
+  mix-blend-mode:overlay;
+}
+
+/* ===== RTL adjustments for Persian ===== */
+html{direction:rtl;}
+body{direction:rtl; text-align:right;}
+.ltr{direction:ltr; unicode-bidi:isolate; display:inline-block;}
+.nav-links{direction:rtl;}
+.hero-actions{direction:rtl;}
+.contact-socials{direction:rtl;}
+
+/* ===== Right Now banner ===== */
+.now-banner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 6vw 4vw;
+  display:flex;
+  align-items:center;
+  gap:0.9rem;
+  flex-wrap:wrap;
+}
+.now-dot{
+  width:9px; height:9px;
+  border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 0 0 rgba(255,111,97,0.5);
+  animation:nowpulse 2.2s ease infinite;
+  flex-shrink:0;
+}
+@keyframes nowpulse{
+  0%{box-shadow:0 0 0 0 rgba(255,111,97,0.5);}
+  70%{box-shadow:0 0 0 10px rgba(255,111,97,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,111,97,0);}
+}
+.now-label{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.05em;
+  color:var(--orange);
+  flex-shrink:0;
+}
+.now-text{
+  color:var(--gray);
+  font-size:0.95rem;
+  border-inline-start:1px solid var(--line);
+  padding-inline-start:0.9rem;
+}
+
+/* ===== Achievements ===== */
+.achievements-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.4rem;
+}
+.achievement-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:1.6rem;
+  transition:transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.achievement-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,203,119,0.4);
+}
+.achievement-image{
+  width:100%;
+  aspect-ratio:4/3;
+  border-radius:12px;
+  background:var(--panel-2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin-bottom:1.1rem;
+}
+.achievement-image img{
+  width:100%; height:100%;
+  object-fit:cover;
+}
+.achievement-placeholder{
+  font-size:2.4rem;
+  opacity:0.35;
+  filter:grayscale(1);
+}
+.achievement-card h3{
+  font-family:var(--display);
+  font-size:1.15rem;
+  font-weight:500;
+  margin-bottom:0.4rem;
+}
+.achievement-card p{
+  color:var(--gray);
+  font-size:0.9rem;
+}
+@media (max-width:820px){
+  .achievements-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Visitor badge ===== */
+.visitor-badge{
+  display:block;
+  margin:0.8rem auto 0;
+  opacity:0.75;
+  filter:grayscale(0.15);
+}
