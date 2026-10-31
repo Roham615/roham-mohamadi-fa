@@ -300,7 +300,7 @@ skillBars.forEach(el => skillObserver.observe(el));
   function resize(){
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
-    const count = Math.min(70, Math.floor((w * h) / 22000));
+    const count = Math.min(26, Math.floor((w * h) / 70000));
     nodes = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
