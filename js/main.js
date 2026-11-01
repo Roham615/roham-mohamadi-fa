@@ -72,7 +72,7 @@
           emailEl.textContent = data.contact.email;
           emailEl.href = `mailto:${data.contact.email}`;
         }
-        ['linkedin','github','instagram'].forEach(k => {
+        ['linkedin','telegram','instagram'].forEach(k => {
           const a = document.getElementById('contact-' + k), u = (data.contact[k] || '').trim();
           if (!a) return;
           if (!u || u === '#') { a.style.display = 'none'; return; }
