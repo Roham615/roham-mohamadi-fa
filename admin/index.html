@@ -83,7 +83,7 @@ const SEC=[
  {id:'timeline',t:'مسیر',groups:rng(4).map(i=>({t:'مرحله '+i,f:[[`timeline.item${i}.title`,'عنوان'],[`timeline.item${i}.description`,'توضیح','a']]}))},
  {id:'skills',t:'مهارت‌ها',groups:rng(4).map(i=>({t:'مهارت '+i,f:[[`skills.skill${i}.name`,'نام'],[`skills.skill${i}.level`,'سطح (۰ تا ۱۰۰)','n']]}))},
  {id:'memories',t:'خاطره‌ها',groups:rng(3).map(i=>({t:'خاطره '+i,f:[[`achievements.ach${i}.title`,'عنوان'],[`achievements.ach${i}.note`,'توضیح کوتاه','a'],[`achievements.ach${i}.image`,'عکس (اختیاری)','i']]}))},
- {id:'contact',t:'تماس',groups:[{f:[['contact.description','متن','a'],['contact.email','ایمیل'],['contact.linkedin','لینک لینکدین'],['contact.github','لینک گیت‌هاب'],['contact.instagram','لینک اینستاگرام']]}]}
+ {id:'contact',t:'تماس',groups:[{f:[['contact.description','متن','a'],['contact.email','ایمیل'],['contact.linkedin','لینک لینکدین'],['contact.telegram','لینک تلگرام'],['contact.instagram','لینک اینستاگرام']]}]}
 ];
 const getP=(o,p)=>p.split('.').reduce((a,k)=>a==null?a:a[k],o);
 const setP=(o,p,v)=>{const k=p.split('.');let a=o;k.slice(0,-1).forEach(x=>a=a[x]=a[x]||{});a[k.at(-1)]=v};
