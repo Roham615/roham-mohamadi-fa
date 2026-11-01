@@ -94,7 +94,7 @@ const gh=(p,o={})=>fetch(API+p,{...o,headers:{Authorization:'Bearer '+S.token,Ac
 async function errMsg(r){let m='';try{m=(await r.json()).message}catch(e){}const M={401:'توکن نامعتبر یا منقضی شده',403:'دسترسی کافی نیست (Contents باید Read and write باشه)',404:'مخزن، شاخه یا فایل پیدا نشد',409:'تداخل در ذخیره، دوباره تلاش کن',422:'درخواست نامعتبر'};return(M[r.status]||'خطا ('+r.status+')')+(m?' — '+m:'')}
 function toast(t,bad){const e=$('#toast');e.textContent=t;e.className='show'+(bad?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',bad?6000:3500)}
 function mark(d){dirty=d;const s=$('#state');s.textContent=d?'تغییرات ذخیره‌نشده':'بدون تغییر';s.className='chip'+(d?' dirty':'')}
-function field([p,l,t]){const ltr=/email|linkedin|github|instagram/.test(p)?' dir="ltr"':'';
+function field([p,l,t]){const ltr=/email|linkedin|telegram|instagram/.test(p)?' dir="ltr"':'';
  if(t==='a')return`<label>${l}<textarea data-p="${p}"></textarea></label>`;
  if(t==='n')return`<label>${l}<input type="number" min="0" max="100" data-p="${p}"></label>`;
  if(t==='i')return`<label>${l}</label><div class="pv" data-pv="${p}">بدون عکس</div><input type="file" accept="image/*" data-img="${p}"><input type="hidden" data-p="${p}">`;
