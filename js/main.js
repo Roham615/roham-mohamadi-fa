@@ -14,7 +14,7 @@
         setText('hero-last-name', data.hero.lastName);
         setText('hero-subtitle', data.hero.subtitle);
         if (data.hero.firstName || data.hero.lastName){
-          document.title = `${data.hero.firstName || ''} ${data.hero.lastName || ''} — Biology Student & Curious Mind, Tehran`.trim();
+          document.title = `${data.hero.firstName || ''} ${data.hero.lastName || ''} — دانش‌آموز رشته‌ی تجربی، تهران`.trim();
         }
       }
       if (data.about){
@@ -72,12 +72,12 @@
           emailEl.textContent = data.contact.email;
           emailEl.href = `mailto:${data.contact.email}`;
         }
-        const linkedin = document.getElementById('contact-linkedin');
-        if (linkedin && data.contact.linkedin) linkedin.href = data.contact.linkedin;
-        const github = document.getElementById('contact-github');
-        if (github && data.contact.github) github.href = data.contact.github;
-        const instagram = document.getElementById('contact-instagram');
-        if (instagram && data.contact.instagram) instagram.href = data.contact.instagram;
+        ['linkedin','github','instagram'].forEach(k => {
+          const a = document.getElementById('contact-' + k), u = (data.contact[k] || '').trim();
+          if (!a) return;
+          if (!u || u === '#') { a.style.display = 'none'; return; }
+          a.style.display = ''; a.href = u; a.target = '_blank'; a.rel = 'noopener';
+        });
       }
     })
     .catch(() => { /* fall back silently to the default text already in the HTML */ });
@@ -355,3 +355,9 @@ document.addEventListener('scroll', () => {
     navEl.style.padding = '22px 6vw';
   }
 }, { passive: true });
+
+// Escape closes the settings panel and the mobile menu
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  ['settingsPanel','mobileMenu','hamburger'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.remove('open'); });
+});
