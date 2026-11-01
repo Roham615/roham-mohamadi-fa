@@ -1,480 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edit Content — رهام محمدی</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>پنل مدیریت — رهام محمدی</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --void:#0b0f1e; --panel:#131a2e; --panel-2:#1b2440;
-    --orange:#ff6f61; --amber:#ffcb77; --bone:#eef1f8; --gray:#8892a8;
-    --line:rgba(238,241,248,0.1);
-    --display:"Vazirmatn", Tahoma, sans-serif;
-    --body:"Vazirmatn", Tahoma, sans-serif;
-    --mono:"Vazirmatn", Tahoma, sans-serif;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--void); color:var(--bone);
-    font-family:var(--body); min-height:100vh;
-    padding:4vh 5vw 8vh;
-  }
-  h1{font-family:var(--display); font-weight:600; font-size:1.9rem; margin:0 0 0.4rem;}
-  h1 span{color:var(--orange); font-style:italic;}
-  .sub{color:var(--gray); margin:0 0 2.5rem; font-size:0.95rem;}
-  .card{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    padding:1.8rem; margin-bottom:1.4rem; max-width:640px;
-  }
-  .card h2{
-    font-family:var(--display); font-weight:500; font-size:1.15rem;
-    margin:0 0 1.2rem; color:var(--amber);
-  }
-  label{
-    display:block; font-family:var(--mono); font-size:0.72rem;
-    letter-spacing:0.05em; text-transform:uppercase; color:var(--gray);
-    margin:1rem 0 0.4rem;
-  }
-  label:first-of-type{margin-top:0;}
-  input[type=text], input[type=password], input[type=number], textarea{
-    width:100%; background:var(--void); border:1px solid var(--line);
-    border-radius:8px; padding:0.7rem 0.9rem; color:var(--bone);
-    font-family:var(--body); font-size:0.92rem; resize:vertical;
-    transition:border-color 0.25s ease;
-  }
-  input:focus, textarea:focus{outline:none; border-color:var(--orange);}
-  textarea{min-height:70px; line-height:1.5;}
-  .row2{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
-  .btn{
-    font-family:var(--mono); font-size:0.8rem; letter-spacing:0.04em;
-    text-transform:uppercase; padding:0.85rem 1.6rem; border-radius:999px;
-    border:none; cursor:pointer; transition:transform 0.25s ease, opacity 0.25s ease;
-  }
-  .btn-primary{background:var(--orange); color:var(--void); font-weight:600;}
-  .btn-primary:hover{transform:translateY(-2px);}
-  .btn-primary:disabled{opacity:0.5; cursor:not-allowed; transform:none;}
-  .btn-ghost{background:transparent; border:1px solid var(--line); color:var(--bone);}
-  .btn-ghost:hover{border-color:var(--orange); color:var(--orange);}
-  .msg{
-    font-family:var(--mono); font-size:0.82rem; padding:0.9rem 1rem;
-    border-radius:10px; margin-bottom:1.4rem; max-width:640px; display:none;
-  }
-  .msg.show{display:block;}
-  .msg.ok{background:rgba(255,107,53,0.12); border:1px solid rgba(255,107,53,0.35); color:var(--amber);}
-  .msg.err{background:rgba(255,80,80,0.1); border:1px solid rgba(255,80,80,0.35); color:#ff8080;}
-  .top-bar{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; max-width:640px;}
-  .hint{color:var(--gray); font-size:0.82rem; margin-top:0.6rem; line-height:1.5;}
-  .hint a{color:var(--orange);}
-  #app{display:none;}
-  #loginScreen .card{max-width:460px;}
-  footer{margin-top:2.5rem; color:var(--gray); font-family:var(--mono); font-size:0.72rem;}
-  .section-actions{position:sticky; bottom:0; background:linear-gradient(to top, var(--void) 60%, transparent); padding:1.5rem 0 0.5rem; max-width:640px;}
-  .ach-block{padding:0.9rem 0; border-top:1px solid var(--line);}
-  .ach-block:first-child{border-top:none; padding-top:0;}
-  .ach-preview{
-    width:100%; max-width:180px; aspect-ratio:4/3; border-radius:8px;
-    background:var(--void); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden; margin-top:0.5rem; color:var(--gray); font-size:0.72rem; font-family:var(--mono);
-  }
-  .ach-preview img{width:100%; height:100%; object-fit:cover;}
-  input[type=file]{
-    width:100%; background:var(--void); border:1px solid var(--line);
-    border-radius:8px; padding:0.6rem 0.8rem; color:var(--gray);
-    font-family:var(--body); font-size:0.85rem;
-  }
+:root{--void:#070b18;--panel:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--orange:#ff6f61;--amber:#ffcb77;--bone:#f1f4fb;--gray:#9aa3bc;--grad:linear-gradient(110deg,#ff6f61,#ffcb77 55%,#ff9e8a)}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Vazirmatn",Tahoma,sans-serif;background:radial-gradient(circle at 15% 10%,rgba(255,111,97,.18),transparent 40%),radial-gradient(circle at 90% 5%,rgba(122,162,255,.16),transparent 40%),var(--void);background-attachment:fixed;color:var(--bone);line-height:1.8;min-height:100vh}
+[hidden]{display:none!important}
+label{display:block;font-size:.85rem;color:var(--gray);margin-top:.9rem}
+input,textarea{display:block;width:100%;margin-top:.35rem;padding:.7rem .9rem;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.28);color:var(--bone);font:inherit;font-size:.95rem;transition:.25s}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus{outline:0;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,111,97,.18)}
+input[type=file]{padding:.5rem;font-size:.8rem}
+.btn{border:1px solid transparent;border-radius:999px;padding:.65rem 1.4rem;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;background:var(--grad);color:#1a0f12;transition:.3s;text-decoration:none;display:inline-block}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(255,111,97,.7)}
+.btn:disabled{opacity:.5;cursor:wait;transform:none}
+.btn.ghost{background:var(--panel);color:var(--bone);border-color:var(--line)}
+.logo{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--grad);color:#1a0f12;font-weight:800;margin:0 auto .8rem}
+.logo.sm{width:38px;height:38px;font-size:.8rem;margin:0}
+#login{min-height:100vh;display:grid;place-items:center;padding:1.2rem}
+.lcard{width:100%;max-width:430px;padding:2rem;border-radius:28px;background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+.lcard h1{text-align:center;font-size:1.6rem}.muted{color:var(--gray);text-align:center;font-size:.9rem}
+.lcard .btn{width:100%;margin-top:1.4rem;padding:.85rem}
+.pw{position:relative}.pw button{position:absolute;inset-inline-end:.5rem;top:50%;transform:translateY(-35%);background:none;border:0;color:var(--gray);cursor:pointer;font-size:1.1rem}
+details{margin-top:1.2rem;font-size:.85rem;color:var(--gray)}summary{cursor:pointer;color:var(--amber)}ol{padding-inline-start:1.2rem;margin-top:.5rem}
+.err{margin-top:1rem;padding:.7rem 1rem;border-radius:12px;background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.4);color:#ff9a9a;font-size:.88rem}
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:.8rem 1.2rem;background:rgba(7,11,24,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.7rem}.acts{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{font-size:.75rem;padding:.2rem .8rem;border-radius:999px;border:1px solid var(--line);color:var(--gray)}.chip.dirty{color:var(--amber);border-color:var(--amber)}
+.chips{display:flex;gap:.5rem;overflow-x:auto;padding:1rem 1.2rem;max-width:980px;margin:0 auto}
+.chips a{white-space:nowrap;padding:.35rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--gray);text-decoration:none;font-size:.85rem;transition:.25s}.chips a:hover{color:var(--orange);border-color:var(--orange)}
+main{max-width:980px;margin:0 auto;padding:0 1.2rem 6rem}
+.card{padding:1.5rem;margin-bottom:1.2rem;border-radius:24px;background:var(--panel);border:1px solid var(--line);scroll-margin-top:90px}
+.card h2{font-size:1.25rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;width:max-content}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:.6rem}
+.grp{padding:1rem 1.1rem;border-radius:18px;background:rgba(0,0,0,.18);border:1px solid var(--line)}.grp h3{font-size:.95rem;color:var(--amber)}
+.pv{aspect-ratio:4/3;border-radius:12px;background:rgba(0,0,0,.3);display:grid;place-items:center;overflow:hidden;color:var(--gray);font-size:.8rem;margin-top:.4rem}.pv img{width:100%;height:100%;object-fit:cover}
+#toast{position:fixed;bottom:1.4rem;left:50%;transform:translate(-50%,30px);opacity:0;padding:.8rem 1.4rem;border-radius:999px;background:#12182c;border:1px solid var(--orange);box-shadow:0 14px 40px -10px #000;transition:.4s;z-index:50;font-size:.9rem;pointer-events:none;max-width:90vw}
+#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{border-color:#ff6b6b;color:#ffb0b0}
 </style>
 </head>
 <body>
+<div id="login"><div class="lcard">
+  <div class="logo">ر.م</div><h1>پنل مدیریت</h1><p class="muted">برای ویرایش سایت با توکن گیت‌هاب وارد شو</p>
+  <div id="lerr" class="err" hidden></div>
+  <label>نام کاربری گیت‌هاب<input id="owner" dir="ltr" value="roham615" autocomplete="off"></label>
+  <label>نام مخزن (repository)<input id="repo" dir="ltr" value="roham-mohamadi-fa" autocomplete="off"></label>
+  <label>شاخه<input id="branch" dir="ltr" value="main" autocomplete="off"></label>
+  <label>توکن<div class="pw"><input id="token" type="password" dir="ltr" placeholder="github_pat_..." autocomplete="off"><button type="button" id="eye" aria-label="نمایش توکن">👁</button></div></label>
+  <button class="btn" id="go">ورود</button>
+  <details><summary>توکن رو از کجا بگیرم؟</summary><ol>
+    <li>گیت‌هاب ← عکس پروفایل ← Settings ← Developer settings</li>
+    <li>Personal access tokens ← Fine-grained tokens ← Generate new token</li>
+    <li>Repository access: فقط همین مخزن</li>
+    <li>Permissions ← Contents ← Read and write</li>
+    <li>توکن رو کپی کن و اینجا بذار. جای دیگه‌ای به اشتراکش نذار.</li></ol></details>
+</div></div>
 
-<h1>Edit content for <span>رهام محمدی</span></h1>
-<p class="sub">Changes are committed straight to your GitHub repository.</p>
-
-<div id="loginScreen">
-  <div class="msg err" id="loginError"></div>
-  <div class="card">
-    <h2>Connect to GitHub</h2>
-    <label for="ghOwner">GitHub username</label>
-    <input type="text" id="ghOwner" placeholder="e.g. rohammohamadi">
-    <label for="ghRepo">Repository name</label>
-    <input type="text" id="ghRepo" placeholder="e.g. roham-mohamadi-site">
-    <label for="ghBranch">Branch</label>
-    <input type="text" id="ghBranch" value="main">
-    <label for="ghToken">Personal access token</label>
-    <input type="password" id="ghToken" placeholder="ghp_...">
-    <p class="hint">
-      Need a token? Go to GitHub &rarr; click your profile picture &rarr;
-      <b>Settings</b> &rarr; <b>Developer settings</b> &rarr;
-      <b>Personal access tokens</b> &rarr; <b>Fine-grained tokens</b> &rarr;
-      <b>Generate new token</b>. Under <b>Repository access</b>, pick
-      <b>Only select repositories</b> and choose this repo. Under
-      <b>Permissions &rarr; Contents</b>, set it to <b>Read and write</b>.
-      Copy the token and paste it above &mdash; keep it secret, it works like a password.
-    </p>
-    <div class="section-actions" style="position:static; background:none; padding-top:1.4rem;">
-      <button class="btn btn-primary" onclick="connect()">Connect</button>
-    </div>
-  </div>
+<div id="app" hidden>
+  <header class="bar">
+    <div class="brand"><span class="logo sm">ر.م</span><b>پنل مدیریت</b><span id="state" class="chip">بدون تغییر</span></div>
+    <div class="acts"><a id="view" class="btn ghost" target="_blank" rel="noopener">مشاهده سایت</a><button id="save" class="btn">ذخیره و انتشار</button><button id="out" class="btn ghost">خروج</button></div>
+  </header>
+  <nav class="chips" id="chips"></nav>
+  <main id="form"></main>
 </div>
-
-<div id="app">
-  <div class="top-bar">
-    <span class="hint" id="repoLabel"></span>
-    <button class="btn btn-ghost" onclick="logout()">Log out</button>
-  </div>
-  <div class="msg" id="statusMsg"></div>
-
-  <div class="card">
-    <h2>Hero</h2>
-    <label>Eyebrow line</label>
-    <input type="text" id="f_hero_eyebrow">
-    <div class="row2">
-      <div><label>First name</label><input type="text" id="f_hero_firstName"></div>
-      <div><label>Last name</label><input type="text" id="f_hero_lastName"></div>
-    </div>
-    <label>Subtitle</label>
-    <textarea id="f_hero_subtitle"></textarea>
-  </div>
-
-  <div class="card">
-    <h2>About</h2>
-    <label>Lead paragraph</label>
-    <textarea id="f_about_lead"></textarea>
-    <label>Detail paragraph</label>
-    <textarea id="f_about_detail"></textarea>
-  </div>
-
-  <div class="card">
-    <h2>Interests — 3 cards</h2>
-    <div id="interestsFields"></div>
-  </div>
-
-  <div class="card">
-    <h2>Path / Timeline — 4 steps</h2>
-    <div id="timelineFields"></div>
-  </div>
-
-  <div class="card">
-    <h2>Skills — 4 bars</h2>
-    <div id="skillsFields"></div>
-  </div>
-
-  <div class="card">
-    <h2>Right Now</h2>
-    <p class="hint" style="margin-top:0;">Shown as a small highlighted line under the hero. Update this whenever something changes.</p>
-    <label>What are you doing right now?</label>
-    <textarea id="f_now_text"></textarea>
-  </div>
-
-  <div class="card">
-    <h2>Memories (خاطره‌ها) &mdash; 3 cards</h2>
-    <p class="hint" style="margin-top:0;">Optional photo for each (medal, certificate, etc). Uploading a new photo replaces the old one.</p>
-    <div id="achievementsFields"></div>
-  </div>
-
-  <div class="card">
-    <h2>Contact</h2>
-    <label>Description</label>
-    <textarea id="f_contact_description"></textarea>
-    <label>Email</label>
-    <input type="text" id="f_contact_email">
-    <div class="row2">
-      <div><label>LinkedIn URL</label><input type="text" id="f_contact_linkedin"></div>
-      <div><label>GitHub URL</label><input type="text" id="f_contact_github"></div>
-    </div>
-    <label>Instagram URL</label>
-    <input type="text" id="f_contact_instagram">
-  </div>
-
-  <div class="section-actions">
-    <button class="btn btn-primary" id="saveBtn" onclick="save()">Save &amp; publish</button>
-  </div>
-</div>
-
-<footer>Site content lives at <code>data/content.json</code> in your repository.</footer>
+<div id="toast"></div>
 
 <script>
-let state = { owner:'', repo:'', branch:'main', token:'', sha:'' };
-
-function buildRepeatingFields(containerId, keys, fields){
-  const container = document.getElementById(containerId);
-  container.innerHTML = keys.map((key, i) => {
-    return `<div style="padding:0.9rem 0; border-top:${i>0 ? '1px solid var(--line)' : 'none'};">
-      <label style="margin-top:${i>0?'0.9rem':'0'};">${key.label}</label>
-      ${fields.map(f => `
-        <label>${f.label}</label>
-        ${f.type === 'textarea'
-          ? `<textarea id="f_${key.id}_${f.name}"></textarea>`
-          : `<input type="${f.type||'text'}" id="f_${key.id}_${f.name}">`}
-      `).join('')}
-    </div>`;
-  }).join('');
-}
-
-buildRepeatingFields('interestsFields',
-  [{id:'card1',label:'Card 1'},{id:'card2',label:'Card 2'},{id:'card3',label:'Card 3'}],
-  [{name:'tag',label:'Tag label'},{name:'title',label:'Title'},{name:'description',label:'Description',type:'textarea'}]
-);
-buildRepeatingFields('timelineFields',
-  [{id:'item1',label:'Step 1'},{id:'item2',label:'Step 2'},{id:'item3',label:'Step 3'},{id:'item4',label:'Step 4'}],
-  [{name:'title',label:'Title'},{name:'description',label:'Description',type:'textarea'}]
-);
-buildRepeatingFields('skillsFields',
-  [{id:'skill1',label:'Skill 1'},{id:'skill2',label:'Skill 2'},{id:'skill3',label:'Skill 3'},{id:'skill4',label:'Skill 4'}],
-  [{name:'name',label:'Name'},{name:'level',label:'Level (0-100)',type:'number'}]
-);
-
-function buildAchievementFields(){
-  const container = document.getElementById('achievementsFields');
-  const keys = ['ach1','ach2','ach3'];
-  container.innerHTML = keys.map((key, i) => `
-    <div class="ach-block">
-      <label style="margin-top:0;">Achievement ${i+1}</label>
-      <label>Title</label>
-      <input type="text" id="f_${key}_title">
-      <label>Short note</label>
-      <textarea id="f_${key}_note"></textarea>
-      <label>Photo (optional)</label>
-      <input type="file" accept="image/*" id="f_${key}_file" onchange="previewAchievementFile('${key}')">
-      <input type="hidden" id="f_${key}_existingImage">
-      <div class="ach-preview" id="f_${key}_preview">No photo yet</div>
-    </div>
-  `).join('');
-}
-buildAchievementFields();
-
-function previewAchievementFile(key){
-  const input = document.getElementById(`f_${key}_file`);
-  const preview = document.getElementById(`f_${key}_preview`);
-  if (!input.files || !input.files[0]) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    preview.innerHTML = `<img src="${e.target.result}" alt="preview">`;
-  };
-  reader.readAsDataURL(input.files[0]);
-}
-
-function b64EncodeUnicode(str){
-  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1)));
-}
-function b64DecodeUnicode(str){
-  return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-}
-
-function showMsg(id, text, type){
-  const el = document.getElementById(id);
-  el.textContent = text;
-  el.className = 'msg show ' + type;
-}
-
-async function connect(){
-  const owner = document.getElementById('ghOwner').value.trim();
-  const repo = document.getElementById('ghRepo').value.trim();
-  const branch = document.getElementById('ghBranch').value.trim() || 'main';
-  const token = document.getElementById('ghToken').value.trim();
-
-  if (!owner || !repo || !token){
-    showMsg('loginError', 'Please fill in username, repository name, and token.', 'err');
-    return;
-  }
-
-  try{
-    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data/content.json?ref=${branch}`, {
-      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
-    });
-    if (!res.ok){
-      const body = await res.json().catch(() => ({}));
-      throw new Error(body.message || `GitHub returned ${res.status}`);
-    }
-    const data = await res.json();
-    const content = JSON.parse(b64DecodeUnicode(data.content.replace(/\n/g, '')));
-
-    state = { owner, repo, branch, token, sha: data.sha };
-    sessionStorage.setItem('rm_admin_state', JSON.stringify(state));
-
-    fillForm(content);
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    document.getElementById('repoLabel').textContent = `Connected to ${owner}/${repo} (${branch})`;
-  }catch(err){
-    showMsg('loginError', 'Could not connect: ' + err.message, 'err');
-  }
-}
-
-function fillForm(data){
-  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val ?? ''; };
-  set('f_hero_eyebrow', data.hero?.eyebrow);
-  set('f_hero_firstName', data.hero?.firstName);
-  set('f_hero_lastName', data.hero?.lastName);
-  set('f_hero_subtitle', data.hero?.subtitle);
-  set('f_about_lead', data.about?.lead);
-  set('f_about_detail', data.about?.detail);
-  ['card1','card2','card3'].forEach(k => {
-    set(`f_${k}_tag`, data.interests?.[k]?.tag);
-    set(`f_${k}_title`, data.interests?.[k]?.title);
-    set(`f_${k}_description`, data.interests?.[k]?.description);
-  });
-  ['item1','item2','item3','item4'].forEach(k => {
-    set(`f_${k}_title`, data.timeline?.[k]?.title);
-    set(`f_${k}_description`, data.timeline?.[k]?.description);
-  });
-  ['skill1','skill2','skill3','skill4'].forEach(k => {
-    set(`f_${k}_name`, data.skills?.[k]?.name);
-    set(`f_${k}_level`, data.skills?.[k]?.level);
-  });
-  set('f_now_text', data.now?.text);
-  ['ach1','ach2','ach3'].forEach(key => {
-    const a = data.achievements?.[key];
-    set(`f_${key}_title`, a?.title);
-    set(`f_${key}_note`, a?.note);
-    set(`f_${key}_existingImage`, a?.image || '');
-    const preview = document.getElementById(`f_${key}_preview`);
-    if (preview){
-      preview.innerHTML = a?.image ? `<img src="../${a.image}" alt="current">` : 'No photo yet';
-    }
-  });
-  set('f_contact_description', data.contact?.description);
-  set('f_contact_email', data.contact?.email);
-  set('f_contact_linkedin', data.contact?.linkedin);
-  set('f_contact_github', data.contact?.github);
-  set('f_contact_instagram', data.contact?.instagram);
-}
-
-function collectForm(){
-  const get = id => document.getElementById(id)?.value ?? '';
-  const obj = {
-    hero: {
-      eyebrow: get('f_hero_eyebrow'), firstName: get('f_hero_firstName'),
-      lastName: get('f_hero_lastName'), subtitle: get('f_hero_subtitle')
-    },
-    about: { lead: get('f_about_lead'), detail: get('f_about_detail') },
-    interests: {}, timeline: {}, skills: {}, achievements: {},
-    now: { text: get('f_now_text') },
-    contact: {
-      description: get('f_contact_description'), email: get('f_contact_email'),
-      linkedin: get('f_contact_linkedin'), github: get('f_contact_github'),
-      instagram: get('f_contact_instagram')
-    }
-  };
-  ['card1','card2','card3'].forEach(k => {
-    obj.interests[k] = { tag: get(`f_${k}_tag`), title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
-  });
-  ['item1','item2','item3','item4'].forEach(k => {
-    obj.timeline[k] = { title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
-  });
-  ['skill1','skill2','skill3','skill4'].forEach(k => {
-    obj.skills[k] = { name: get(`f_${k}_name`), level: Number(get(`f_${k}_level`)) || 0 };
-  });
-  ['ach1','ach2','ach3'].forEach(k => {
-    obj.achievements[k] = {
-      title: get(`f_${k}_title`), note: get(`f_${k}_note`),
-      image: get(`f_${k}_existingImage`)
-    };
-  });
-  return obj;
-}
-
-async function uploadAchievementImage(key){
-  const input = document.getElementById(`f_${key}_file`);
-  if (!input.files || !input.files[0]) return null;
-  const file = input.files[0];
-  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
-  const path = `images/achievements/${key}.${ext}`;
-
-  const base64 = await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result.split(',')[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
-  let existingSha = null;
-  try{
-    const getRes = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/${path}?ref=${state.branch}`, {
-      headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' }
-    });
-    if (getRes.ok){
-      const getData = await getRes.json();
-      existingSha = getData.sha;
-    }
-  }catch(e){ /* no existing file at this path, that's fine */ }
-
-  const putBody = { message: `Update achievement photo (${key})`, content: base64, branch: state.branch };
-  if (existingSha) putBody.sha = existingSha;
-
-  const putRes = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/${path}`, {
-    method: 'PUT',
-    headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' },
-    body: JSON.stringify(putBody)
-  });
-  if (!putRes.ok){
-    const body = await putRes.json().catch(() => ({}));
-    throw new Error(`Photo upload failed (${key}): ${body.message || putRes.status}`);
-  }
-  return path;
-}
-
-async function save(){
-  const btn = document.getElementById('saveBtn');
-  btn.disabled = true;
-  try{
-    btn.textContent = 'Uploading photos…';
-    for (const key of ['ach1', 'ach2', 'ach3']){
-      const newPath = await uploadAchievementImage(key);
-      if (newPath){
-        document.getElementById(`f_${key}_existingImage`).value = newPath;
-      }
-    }
-
-    btn.textContent = 'Saving…';
-    const newContent = JSON.stringify(collectForm(), null, 2);
-    const res = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/data/content.json`, {
-      method: 'PUT',
-      headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' },
-      body: JSON.stringify({
-        message: 'Update site content via admin panel',
-        content: b64EncodeUnicode(newContent),
-        sha: state.sha,
-        branch: state.branch
-      })
-    });
-    if (!res.ok){
-      const body = await res.json().catch(() => ({}));
-      throw new Error(body.message || `GitHub returned ${res.status}`);
-    }
-    const data = await res.json();
-    state.sha = data.content.sha;
-    showMsg('statusMsg', 'Saved. Your live site will update in about a minute.', 'ok');
-  }catch(err){
-    showMsg('statusMsg', 'Save failed: ' + err.message, 'err');
-  }finally{
-    btn.disabled = false;
-    btn.textContent = 'Save & publish';
-  }
-}
-
-function logout(){
-  sessionStorage.removeItem('rm_admin_state');
-  location.reload();
-}
-
-// Restore session if already connected in this tab
-(function restore(){
-  const saved = sessionStorage.getItem('rm_admin_state');
-  if (!saved) return;
-  try{
-    const s = JSON.parse(saved);
-    document.getElementById('ghOwner').value = s.owner;
-    document.getElementById('ghRepo').value = s.repo;
-    document.getElementById('ghBranch').value = s.branch;
-    document.getElementById('ghToken').value = s.token;
-    connect();
-  }catch(e){}
-})();
+const $=s=>document.querySelector(s),API='https://api.github.com',SK='rm-admin-session',PK='rm-admin-prefs';
+let S={},DATA=null,dirty=false;const files={};
+const rng=n=>[...Array(n)].map((_,i)=>i+1);
+const SEC=[
+ {id:'hero',t:'بخش اصلی',groups:[{f:[['hero.eyebrow','متن کوچک بالای اسم'],['hero.firstName','نام'],['hero.lastName','نام خانوادگی'],['hero.subtitle','زیرعنوان','a']]}]},
+ {id:'now',t:'الان',groups:[{f:[['now.text','الان دارم چیکار می‌کنم؟','a']]}]},
+ {id:'about',t:'درباره',groups:[{f:[['about.lead','پاراگراف اصلی','a'],['about.detail','پاراگراف دوم','a']]}]},
+ {id:'interests',t:'علایق',groups:rng(3).map(i=>({t:'کارت '+i,f:[[`interests.card${i}.tag`,'برچسب'],[`interests.card${i}.title`,'عنوان'],[`interests.card${i}.description`,'توضیح','a']]}))},
+ {id:'timeline',t:'مسیر',groups:rng(4).map(i=>({t:'مرحله '+i,f:[[`timeline.item${i}.title`,'عنوان'],[`timeline.item${i}.description`,'توضیح','a']]}))},
+ {id:'skills',t:'مهارت‌ها',groups:rng(4).map(i=>({t:'مهارت '+i,f:[[`skills.skill${i}.name`,'نام'],[`skills.skill${i}.level`,'سطح (۰ تا ۱۰۰)','n']]}))},
+ {id:'memories',t:'خاطره‌ها',groups:rng(3).map(i=>({t:'خاطره '+i,f:[[`achievements.ach${i}.title`,'عنوان'],[`achievements.ach${i}.note`,'توضیح کوتاه','a'],[`achievements.ach${i}.image`,'عکس (اختیاری)','i']]}))},
+ {id:'contact',t:'تماس',groups:[{f:[['contact.description','متن','a'],['contact.email','ایمیل'],['contact.linkedin','لینک لینکدین'],['contact.github','لینک گیت‌هاب'],['contact.instagram','لینک اینستاگرام']]}]}
+];
+const getP=(o,p)=>p.split('.').reduce((a,k)=>a==null?a:a[k],o);
+const setP=(o,p,v)=>{const k=p.split('.');let a=o;k.slice(0,-1).forEach(x=>a=a[x]=a[x]||{});a[k.at(-1)]=v};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const enc=s=>btoa(Array.from(new TextEncoder().encode(s),c=>String.fromCharCode(c)).join(''));
+const dec=b=>new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g,'')),c=>c.charCodeAt(0)));
+const gh=(p,o={})=>fetch(API+p,{...o,headers:{Authorization:'Bearer '+S.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}});
+async function errMsg(r){let m='';try{m=(await r.json()).message}catch(e){}const M={401:'توکن نامعتبر یا منقضی شده',403:'دسترسی کافی نیست (Contents باید Read and write باشه)',404:'مخزن، شاخه یا فایل پیدا نشد',409:'تداخل در ذخیره، دوباره تلاش کن',422:'درخواست نامعتبر'};return(M[r.status]||'خطا ('+r.status+')')+(m?' — '+m:'')}
+function toast(t,bad){const e=$('#toast');e.textContent=t;e.className='show'+(bad?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',bad?6000:3500)}
+function mark(d){dirty=d;const s=$('#state');s.textContent=d?'تغییرات ذخیره‌نشده':'بدون تغییر';s.className='chip'+(d?' dirty':'')}
+function field([p,l,t]){const ltr=/email|linkedin|github|instagram/.test(p)?' dir="ltr"':'';
+ if(t==='a')return`<label>${l}<textarea data-p="${p}"></textarea></label>`;
+ if(t==='n')return`<label>${l}<input type="number" min="0" max="100" data-p="${p}"></label>`;
+ if(t==='i')return`<label>${l}</label><div class="pv" data-pv="${p}">بدون عکس</div><input type="file" accept="image/*" data-img="${p}"><input type="hidden" data-p="${p}">`;
+ return`<label>${l}<input data-p="${p}"${ltr}></label>`}
+function render(){
+ $('#chips').innerHTML=SEC.map(s=>`<a href="#s-${s.id}">${s.t}</a>`).join('');
+ $('#form').innerHTML=SEC.map(s=>`<section class="card" id="s-${s.id}"><h2>${s.t}</h2><div class="groups">${s.groups.map(g=>`<div class="grp">${g.t?`<h3>${g.t}</h3>`:''}${g.f.map(field).join('')}</div>`).join('')}</div></section>`).join('');
+ fill()}
+function fill(){
+ document.querySelectorAll('[data-p]').forEach(el=>el.value=getP(DATA,el.dataset.p)??'');
+ document.querySelectorAll('[data-pv]').forEach(pv=>{const v=getP(DATA,pv.dataset.pv);pv.innerHTML=v?`<img src="../${esc(v)}" alt="">`:'بدون عکس'});
+ document.querySelectorAll('[data-img]').forEach(i=>i.value='');mark(false)}
+function collect(){const o=structuredClone(DATA);
+ document.querySelectorAll('[data-p]').forEach(el=>setP(o,el.dataset.p,el.type==='number'?Math.min(100,Math.max(0,+el.value||0)):el.value));return o}
+document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.p!==undefined)mark(true)});
+document.addEventListener('change',e=>{const p=e.target.dataset&&e.target.dataset.img;if(!p||!e.target.files[0])return;
+ files[p]=e.target.files[0];const pv=document.querySelector(`[data-pv="${p}"]`);pv.innerHTML='';const im=new Image();im.src=URL.createObjectURL(files[p]);pv.append(im);mark(true)});
+async function shrink(f){const b=await createImageBitmap(f),k=Math.min(1,1400/Math.max(b.width,b.height)),c=document.createElement('canvas');
+ c.width=Math.round(b.width*k);c.height=Math.round(b.height*k);c.getContext('2d').drawImage(b,0,0,c.width,c.height);return new Promise(r=>c.toBlob(r,'image/jpeg',.85))}
+const b64=blob=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(blob)});
+async function putFile(path,content,msg){const u=`/repos/${S.owner}/${S.repo}/contents/${path}`;
+ for(let k=0;k<2;k++){let sha;const g=await gh(`${u}?ref=${S.branch}`);
+  if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)throw new Error(await errMsg(g));
+  const r=await gh(u,{method:'PUT',body:JSON.stringify({message:msg,content,branch:S.branch,...(sha?{sha}:{})})});
+  if(r.ok)return r.json();if(k||(r.status!==409&&r.status!==422))throw new Error(await errMsg(r))}}
+async function save(){const b=$('#save');b.disabled=true;b.textContent='در حال ذخیره…';
+ try{const out=collect();
+  for(const[p,f]of Object.entries(files)){const key=p.split('.')[1],path=`images/achievements/${key}.jpg`;
+   b.textContent='آپلود عکس…';await putFile(path,await b64(await shrink(f)),'Update photo '+key);setP(out,p,`${path}?v=${Date.now()}`);delete files[p]}
+  b.textContent='ذخیره متن‌ها…';await putFile('data/content.json',enc(JSON.stringify(out,null,2)+'\n'),'Update site content via admin');
+  DATA=out;fill();toast('ذخیره شد ✓ سایت تا یکی دو دقیقه‌ی دیگه آپدیت می‌شه')}
+ catch(e){toast('ذخیره نشد: '+e.message,1)}finally{b.disabled=false;b.textContent='ذخیره و انتشار'}}
+async function connect(saved){
+ S=saved||{owner:$('#owner').value.trim(),repo:$('#repo').value.trim(),branch:$('#branch').value.trim()||'main',token:$('#token').value.trim()};
+ const er=$('#lerr');er.hidden=true;
+ if(!S.owner||!S.repo||!S.token){er.textContent='همه‌ی فیلدها رو پر کن.';er.hidden=false;return}
+ const go=$('#go');go.disabled=true;go.textContent='در حال اتصال…';
+ try{const r=await gh(`/repos/${S.owner}/${S.repo}/contents/data/content.json?ref=${S.branch}`);if(!r.ok)throw new Error(await errMsg(r));
+  DATA=JSON.parse(dec((await r.json()).content));sessionStorage.setItem(SK,JSON.stringify(S));
+  localStorage.setItem(PK,JSON.stringify({owner:S.owner,repo:S.repo,branch:S.branch}));
+  $('#view').href=`https://${S.owner}.github.io/${S.repo}/`;render();$('#login').hidden=true;$('#app').hidden=false}
+ catch(e){er.textContent='اتصال ناموفق: '+e.message;er.hidden=false;sessionStorage.removeItem(SK)}
+ finally{go.disabled=false;go.textContent='ورود'}}
+$('#go').onclick=()=>connect();
+$('#eye').onclick=()=>{const t=$('#token');t.type=t.type==='password'?'text':'password'};
+$('#save').onclick=save;
+$('#out').onclick=()=>{if(dirty&&!confirm('تغییرات ذخیره‌نشده از بین می‌ره. خارج بشم؟'))return;sessionStorage.removeItem(SK);dirty=false;location.reload()};
+addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'&&!$('#app').hidden){e.preventDefault();save()}});
+(function init(){try{const p=JSON.parse(localStorage.getItem(PK)||'null');if(p){$('#owner').value=p.owner;$('#repo').value=p.repo;$('#branch').value=p.branch}
+ const s=JSON.parse(sessionStorage.getItem(SK)||'null');if(s)connect(s)}catch(e){}})();
 </script>
 </body>
 </html>
